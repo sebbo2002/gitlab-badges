@@ -10,7 +10,7 @@ lintIt:
     - ssh
   script:
     - docker login -u "gitlab-ci-token" -p "${CI_BUILD_TOKEN}" docker.sebbo.net
-    - docker run --rm -v $(pwd):$(pwd) -w $(pwd) hyzual/jshint ./
+    - docker run --rm -v $(pwd):$(pwd) -w $(pwd) node:alpine npm install -g jshint && jshint ./
 
 buildIt:
   stage: build
