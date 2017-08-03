@@ -1,16 +1,8 @@
 stages:
-  - lint
   - build
-  - deploy
-
-lintIt:
-  stage: lint
-  tags:
-    - matt.sebbo.net
-    - ssh
-  script:
-    - docker login -u "gitlab-ci-token" -p "${CI_BUILD_TOKEN}" docker.sebbo.net
-    - docker run --rm -v $(pwd):$(pwd) -w $(pwd) node:alpine npm install -g jshint && jshint ./
+  - test
+  - publish
+  - after
 
 buildIt:
   stage: build
@@ -24,17 +16,31 @@ buildIt:
   only:
     - master
 
+lintIt:
+  stage: test
+  tags:
+    - matt.sebbo.net
+    - ssh
+  script:
+    - docker login -u "gitlab-ci-token" -p "${CI_BUILD_TOKEN}" docker.sebbo.net
+    - docker pull docker.sebbo.net/sebbo2002/gitlab-badges
+    - docker run --rm -v $(pwd):$(pwd) -w $(pwd) docker.sebbo.net/sebbo2002/gitlab-badges ./node_modules/jshint/bin/jshint ./
+  only:
+    - master
+
 publish_github:
-  stage: build
+  stage: publish
   tags:
     - matt.sebbo.net
     - ssh
   script:
     - git push "https://${GITHUB_AUTH}@github.com/sebbo2002/gitlab-badges.git" --all
     - git push "https://${GITHUB_AUTH}@github.com/sebbo2002/gitlab-badges.git" --tags
+  only:
+    - master
 
 deploy:
-  stage: deploy
+  stage: publish
   tags:
     - matt.sebbo.net
     - ssh
@@ -56,7 +62,7 @@ deploy:
     - master
 
 trigger_dockerhub:
-  stage: deploy
+  stage: after
   tags:
     - matt.sebbo.net
     - ssh
