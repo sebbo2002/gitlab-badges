@@ -78,7 +78,7 @@ docker run --rm \
 
 ## API
 
-### `/:projectId/:branch/build`
+#### `/:projectId/:branch/build`
 
 Generates a badge with the current build state of the latest commit in the given branch. 
 You'll find your project's ID in the GitLab project settings.
@@ -88,7 +88,7 @@ You'll find your project's ID in the GitLab project settings.
 https://gitlab-badges.example.com/1337/master/build
 ```
 
-### `/:projectId/:branch/coverage`
+#### `/:projectId/:branch/coverage`
 
 Generates a badge with the current build coverage of the latest commit in the given branch. 
 You'll find your project's ID in the GitLab project settings.
@@ -98,11 +98,11 @@ You'll find your project's ID in the GitLab project settings.
 https://gitlab-badges.example.com/1337/master/coverage
 ```
 
-### `/cache`
+#### `/cache`
 
 Returns all currently cached data as a JSON object.
 
-### `/ping`
+#### `/ping`
 
 Returns `pong`. Usually helpful to monitor the server in a very basic way.
 
