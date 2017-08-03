@@ -1,6 +1,5 @@
 stages:
   - build
-  - test
   - publish
   - after
 
@@ -13,18 +12,6 @@ buildIt:
     - docker login -u "gitlab-ci-token" -p "${CI_BUILD_TOKEN}" docker.sebbo.net
     - docker build -t docker.sebbo.net/sebbo2002/gitlab-badges .
     - docker push docker.sebbo.net/sebbo2002/gitlab-badges
-  only:
-    - master
-
-lintIt:
-  stage: test
-  tags:
-    - matt.sebbo.net
-    - ssh
-  script:
-    - docker login -u "gitlab-ci-token" -p "${CI_BUILD_TOKEN}" docker.sebbo.net
-    - docker pull docker.sebbo.net/sebbo2002/gitlab-badges
-    - docker run --rm -v $(pwd):$(pwd) -w $(pwd) docker.sebbo.net/sebbo2002/gitlab-badges ./node_modules/jshint/bin/jshint ./
   only:
     - master
 
