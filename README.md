@@ -1,7 +1,7 @@
 # GitLab Badges
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE)
-[![Pipeline](https://https://git-badges.sebbo.net/61/master/build)](https://git.sebbo.net/sebbo2002/gitlab-badges/pipelines)
+[![Pipeline](https://git-badges.sebbo.net/61/master/build)](https://git.sebbo.net/sebbo2002/gitlab-badges/pipelines)
 
 This server acts like a very tiny shields.io to generate SVG badges for your private GitLab instance. Uses shield.io's [gh-badges](https://www.npmjs.com/package/gh-badges) to generate them.
 
