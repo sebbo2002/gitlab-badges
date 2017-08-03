@@ -1,0 +1,66 @@
+stages:
+  - lint
+  - build
+  - deploy
+
+lintIt:
+  stage: lint
+  tags:
+    - matt.sebbo.net
+    - ssh
+  script:
+    - docker login -u "gitlab-ci-token" -p "${CI_BUILD_TOKEN}" docker.sebbo.net
+    - docker run --rm -v $(pwd):$(pwd) -w $(pwd) hyzual/jshint ./
+
+buildIt:
+  stage: build
+  tags:
+    - matt.sebbo.net
+    - ssh
+  script:
+    - docker login -u "gitlab-ci-token" -p "${CI_BUILD_TOKEN}" docker.sebbo.net
+    - docker build -t docker.sebbo.net/sebbo2002/gitlab-badges .
+    - docker push docker.sebbo.net/sebbo2002/gitlab-badges
+  only:
+    - master
+
+publish_github:
+  stage: build
+  tags:
+    - matt.sebbo.net
+    - ssh
+  script:
+    - git push "https://${GITHUB_AUTH}@github.com/sebbo2002/gitlab-badges.git" --all
+    - git push "https://${GITHUB_AUTH}@github.com/sebbo2002/gitlab-badges.git" --tags
+
+deploy:
+  stage: deploy
+  tags:
+    - matt.sebbo.net
+    - ssh
+  environment:
+    name: production
+    url: https://git-badges.sebbo.net/
+  script:
+    - docker login -u "gitlab-ci-token" -p "${CI_BUILD_TOKEN}" docker.sebbo.net
+    - docker pull docker.sebbo.net/sebbo2002/gitlab-badges
+    - docker stop "gitlab-badges" || true
+    - docker rm "gitlab-badges" || true
+    - docker create --restart "always" --name="gitlab-badges" -p 127.0.0.1:10024:8888
+        -e "GITLAB_URL=${GITLAB_URL}"
+        -e "GITLAB_TOKEN=${GITLAB_TOKEN}"
+        -e "BADGE_STYLE=flat-square"
+        sebbo2002/gitlab-badges
+    - docker start gitlab-badges
+  only:
+    - master
+
+trigger_dockerhub:
+  stage: deploy
+  tags:
+    - matt.sebbo.net
+    - ssh
+  script:
+    - curl -X "POST" "https://registry.hub.docker.com/u/sebbo2002/gitlab-badges/trigger/9dcf19b4-2e04-42f2-9858-54fb65b58047/"
+  only:
+    - master
