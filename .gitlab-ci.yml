@@ -43,7 +43,7 @@ deploy:
         -e "GITLAB_URL=${GITLAB_URL}"
         -e "GITLAB_TOKEN=${GITLAB_TOKEN}"
         -e "BADGE_STYLE=flat-square"
-        sebbo2002/gitlab-badges
+        docker.sebbo.net/sebbo2002/gitlab-badges
     - docker start gitlab-badges
   only:
     - master
