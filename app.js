@@ -55,25 +55,25 @@ app.get('/:projectId/:branch/coverage', function (req, res) {
 			img.send('100%', 'brightgreen');
 		}
 		else if (coverage >= 95) {
-			img.send(parseFloat(coverage).toFixed(1), 'brightgreen');
+			img.send(parseFloat(coverage).toFixed(1) + '%', 'brightgreen');
 		}
 		else if (coverage >= 85) {
-			img.send(parseFloat(coverage).toFixed(1), 'green');
+			img.send(parseFloat(coverage).toFixed(1) + '%', 'green');
 		}
 		else if (coverage >= 70) {
-			img.send(parseFloat(coverage).toFixed(1), 'yellowgreen');
+			img.send(parseFloat(coverage).toFixed(1) + '%', 'yellowgreen');
 		}
 		else if (coverage >= 50) {
-			img.send(parseFloat(coverage).toFixed(1), 'yellow');
+			img.send(parseFloat(coverage).toFixed(1) + '%', 'yellow');
 		}
 		else if (coverage >= 25) {
-			img.send(parseFloat(coverage).toFixed(1), 'orange');
+			img.send(parseFloat(coverage).toFixed(1) + '%', 'orange');
 		}
 		else if (coverage >= 10) {
-			img.send(parseFloat(coverage).toFixed(1), 'red');
+			img.send(parseFloat(coverage).toFixed(1) + '%', 'red');
 		}
 		else {
-			img.send(parseFloat(coverage).toFixed(2), 'red');
+			img.send(parseFloat(coverage).toFixed(2) + '%', 'red');
 		}
 	});
 });
