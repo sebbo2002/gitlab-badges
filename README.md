@@ -5,7 +5,7 @@
 
 This server acts like a very tiny shields.io to generate SVG badges for your private GitLab instance. Uses shield.io's [gh-badges](https://www.npmjs.com/package/gh-badges) to generate them.
 
-### Quick Start
+## Quick Start
 
 #### Directly
 
@@ -28,7 +28,7 @@ docker run -e GITLAB_URL=https://gitlab.example.com -e GITLAB_TOKEN=**** sebbo20
 ```
 
 
-### Configuration
+## Configuration
 
 Use environment variables to set login credentials and pushover tokens:
 
@@ -55,7 +55,7 @@ Use environment variables to set login credentials and pushover tokens:
     </tr>
 </table>
 
-### Example
+#### Example
 
 ```bash
 GITLAB_URL=https://gitlab.example.com \
@@ -64,7 +64,7 @@ BADGE_STYLE=flat-square \
 npm start
 ```
 
-##### or
+###### or
 
 ```bash
 docker run --rm \
@@ -75,6 +75,37 @@ docker run --rm \
   sebbo2002/gitlab-badges
 ```
 
-### Todo
+
+## API
+
+### `/:projectId/:branch/build`
+
+Generates a badge with the current build state of the latest commit in the given branch. 
+You'll find your project's ID in the GitLab project settings.
+
+###### Example
+```
+https://gitlab-badges.example.com/1337/master/build
+```
+
+### `/:projectId/:branch/coverage`
+
+Generates a badge with the current build coverage of the latest commit in the given branch. 
+You'll find your project's ID in the GitLab project settings.
+
+###### Example
+```
+https://gitlab-badges.example.com/1337/master/coverage
+```
+
+### `/cache`
+
+Returns all currently cached data as a JSON object.
+
+### `/ping`
+
+Returns `pong`. Usually helpful to monitor the server in a very basic way.
+
+## Todo
 - [ ] Unit Tests 🙈
 - [ ] In Code Documentation ✏️
