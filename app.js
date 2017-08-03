@@ -55,7 +55,7 @@ app.get('/:projectId/:branch/coverage', function (req, res) {
 			img.send('100%', 'brightgreen');
 		}
 		else if (coverage >= 95) {
-			img.send(parseFloat(coverage).toFixed(1) + '%', 'brightgreen');
+			img.send(parseFloat(coverage).toFixed(2) + '%', 'brightgreen');
 		}
 		else if (coverage >= 85) {
 			img.send(parseFloat(coverage).toFixed(1) + '%', 'green');
