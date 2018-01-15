@@ -24,7 +24,7 @@ app.get('/cache', function (req, res) {
 app.get('/:projectId/:branch/build', function (req, res) {
 	states.getState(req.params.projectId, function (error, result) {
 		const img = new BadgeResponse(res, 'build');
-		const status = result[req.params.branch].status;
+		const status = result[req.params.branch] ? result[req.params.branch].status : null;
 		if (error || !status) {
 			img.sendError();
 			return;
