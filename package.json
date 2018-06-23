@@ -4,7 +4,7 @@
   "description": "It's like a very tiny shields.io (without website) for your private GitLab instance…",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jshint ./app.js ./lib/**",
     "start": "node ./app.js"
   },
   "author": "Sebastian Pekarek <mail@sebbo.net>",
@@ -15,10 +15,9 @@
   "license": "MIT",
   "dependencies": {
     "async.map": "^0.5.2",
-    "express": "^4.16.2",
+    "express": "^4.16.3",
     "gh-badges": "^1.3.0",
-    "gitlab": "^1.7.1",
-    "tinyreq": "^3.3.1"
+    "tinyreq": "^3.4.0"
   },
   "devDependencies": {
     "jshint": "^2.9.5"
