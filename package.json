@@ -5,7 +5,12 @@
   "main": "app.js",
   "scripts": {
     "test": "jshint ./app.js ./lib/**",
-    "start": "node ./app.js"
+    "start": "node ./app.js",
+    "check": "npm run check:eslint && npm run check:npm && npm run check:nsp",
+    "check:quick": "npm run check:eslint && npm run check:nsp",
+    "check:eslint": "eslint ./",
+    "check:nsp": "npm audit --only=prod ",
+    "check:npm": "npm-check -s -p"
   },
   "author": "Sebastian Pekarek <mail@sebbo.net>",
   "repository": {
@@ -15,11 +20,14 @@
   "license": "MIT",
   "dependencies": {
     "async.map": "^0.5.2",
-    "express": "^4.16.3",
-    "gh-badges": "^1.3.0",
+    "express": "^4.16.4",
+    "gh-badges": "^2.1.0",
     "tinyreq": "^3.4.0"
   },
   "devDependencies": {
-    "jshint": "^2.9.5"
+    "acorn": "^6.0.4",
+    "eslint": "^5.10.0",
+    "jshint": "^2.9.7",
+    "npm-check": "^5.9.0"
   }
 }
