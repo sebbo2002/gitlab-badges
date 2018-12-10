@@ -3,6 +3,16 @@ stages:
   - publish
   - after
 
+
+check:
+  stage: build
+  tags:
+    - matt.sebbo.net
+    - ssh
+  script:
+    - npm i
+    - npm run check
+
 buildIt:
   stage: build
   tags:
