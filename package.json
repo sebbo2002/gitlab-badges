@@ -9,7 +9,7 @@
     "check": "npm run check:eslint && npm run check:npm && npm run check:nsp",
     "check:quick": "npm run check:eslint && npm run check:nsp",
     "check:eslint": "eslint ./",
-    "check:nsp": "npm audit --only=prod ",
+    "check:nsp": "npm audit --only=prod",
     "check:npm": "npm-check -s -p"
   },
   "author": "Sebastian Pekarek <mail@sebbo.net>",
