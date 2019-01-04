@@ -22,11 +22,11 @@
     "async.map": "^0.5.2",
     "express": "^4.16.4",
     "gh-badges": "^2.1.0",
-    "tinyreq": "^3.4.0"
+    "tinyreq": "^3.4.1"
   },
   "devDependencies": {
-    "acorn": "^6.0.4",
-    "eslint": "^5.10.0",
+    "acorn": "^6.0.5",
+    "eslint": "^5.11.1",
     "jshint": "^2.9.7",
     "npm-check": "^5.9.0"
   }
