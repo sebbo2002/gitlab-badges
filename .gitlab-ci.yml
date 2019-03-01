@@ -10,7 +10,7 @@ check:
     - matt.sebbo.net
     - ssh
   script:
-    - npm i
+    - npm ci
     - npm run check
 
 buildIt:
@@ -19,6 +19,7 @@ buildIt:
     - matt.sebbo.net
     - ssh
   script:
+    - docker pull node:alpine
     - docker login -u "gitlab-ci-token" -p "${CI_BUILD_TOKEN}" docker.sebbo.net
     - docker build -t docker.sebbo.net/sebbo2002/gitlab-badges .
     - docker push docker.sebbo.net/sebbo2002/gitlab-badges
