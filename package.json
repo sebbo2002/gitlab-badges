@@ -6,10 +6,9 @@
   "scripts": {
     "test": "jshint ./app.js ./lib/**",
     "start": "node ./app.js",
-    "check": "npm run check:eslint && npm run check:npm && npm run check:nsp",
+    "check": "npm run check:eslint && npm run check:npm",
     "check:quick": "npm run check:eslint && npm run check:nsp",
     "check:eslint": "eslint ./",
-    "check:nsp": "npm audit --only=prod",
     "check:npm": "npm-check -s -p"
   },
   "author": "Sebastian Pekarek <mail@sebbo.net>",
