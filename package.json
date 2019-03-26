@@ -26,8 +26,8 @@
   },
   "devDependencies": {
     "acorn": "^6.1.1",
-    "eslint": "^5.14.1",
-    "jshint": "^2.10.1",
+    "eslint": "^5.15.3",
+    "jshint": "^2.10.2",
     "npm-check": "^5.9.0"
   }
 }
