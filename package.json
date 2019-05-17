@@ -19,13 +19,13 @@
   "license": "MIT",
   "dependencies": {
     "async.map": "^0.5.2",
-    "express": "^4.16.4",
+    "express": "^4.17.0",
     "gh-badges": "^2.1.0",
     "tinyreq": "^3.4.1"
   },
   "devDependencies": {
     "acorn": "^6.1.1",
-    "eslint": "^5.15.3",
+    "eslint": "^5.16.0",
     "jshint": "^2.10.2",
     "npm-check": "^5.9.0"
   }
