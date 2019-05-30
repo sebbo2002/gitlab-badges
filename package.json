@@ -19,8 +19,8 @@
   "license": "MIT",
   "dependencies": {
     "async.map": "^0.5.2",
-    "express": "^4.17.0",
-    "gh-badges": "^2.1.0",
+    "express": "^4.17.1",
+    "gh-badges": "^2.2.0",
     "tinyreq": "^3.4.1"
   },
   "devDependencies": {
