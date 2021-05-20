@@ -9,6 +9,7 @@ jobs:
   tests:
     name: Unit Tests
     runs-on: ubuntu-latest
+    environment: develop
     if: contains(toJson(github.event.commits.*.message), '[skip ci]') == false || github.ref == 'refs/heads/main'
     strategy:
       matrix:
@@ -39,6 +40,7 @@ jobs:
   coverage:
     name: Code Coverage / Lint
     runs-on: ubuntu-latest
+    environment: develop
     if: contains(toJson(github.event.commits.*.message), '[skip ci]') == false || github.ref == 'refs/heads/main'
     steps:
       - name: ☁️ Checkout Project
@@ -91,6 +93,7 @@ jobs:
   docker-image:
     name: Build Docker Image
     runs-on: ubuntu-latest
+    environment: develop
     if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop'
     steps:
       - name: ☁️ Checkout
@@ -153,6 +156,7 @@ jobs:
       - tests
       - license-checker
       - docker-image
+    environment: develop
     if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop'
     steps:
       - name: ☁️ Checkout Project
