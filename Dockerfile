@@ -1,11 +1,27 @@
-FROM node:alpine
-RUN mkdir -p "/app"
+FROM node:lts-alpine@sha256:3689ad4435a413342ccc352170ad0f77433b41173af7fe4c0076f0c9792642cb as build-container
 
 WORKDIR "/app"
-ADD "./package.json" "/app/package.json"
-ADD "./package-lock.json" "/app/package-lock.json"
+
+COPY package*.json "/app/"
 RUN npm ci
 
-ADD "./app.js" "/app/app.js"
-ADD "./lib" "/app/lib"
-CMD [ "node", "/app/app.js" ]
+COPY . "/app/"
+RUN npm run build && \
+    rm -rf ./.github ./src ./test && \
+    ls -la /app
+
+
+FROM node:lts-alpine@sha256:3689ad4435a413342ccc352170ad0f77433b41173af7fe4c0076f0c9792642cb
+ARG NODE_ENV=production
+ENV NODE_ENV=$NODE_ENV
+
+RUN apk add --no-cache --update dumb-init && \
+    ln -s /app/dist/bin/start.js /usr/local/bin/start
+
+COPY --from=build-container "/app" "/app"
+
+WORKDIR "/app"
+USER node
+
+ENTRYPOINT ["/usr/bin/dumb-init", "--"]
+CMD ["/usr/local/bin/start"]
