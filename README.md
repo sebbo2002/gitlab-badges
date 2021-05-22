@@ -1,34 +1,21 @@
 # GitLab Badges
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE)
-[![Pipeline](https://git-badges.sebbo.net/61/master/build)](https://git.sebbo.net/sebbo2002/gitlab-badges/pipelines)
 
 This server acts like a very tiny shields.io to generate SVG badges for your private GitLab instance. Uses shield.io's [gh-badges](https://www.npmjs.com/package/gh-badges) to generate them.
 
-## Quick Start
 
-#### Directly
+## 📦 Installation
 
-You'll need [node.js](https://nodejs.org/en/) to run this.
+	npm i -g @sebbo2002/gitlab-badges
+    gitlab-badges
 
-```bash
-git clone https://github.com/sebbo2002/gitlab-badges.git
-cd ./gitlab-badges
-npm install
-GITLAB_URL=https://gitlab.example.com GITLAB_TOKEN=**** npm start
-```
+    # OR
+
+    docker run -e GITLAB_URL=https://gitlab.example.com -e GITLAB_TOKEN=**** sebbo2002/gitlab-badges
 
 
-#### Docker
-
-You can also use the docker container to run this script:
-
-```bash
-docker run -e GITLAB_URL=https://gitlab.example.com -e GITLAB_TOKEN=**** sebbo2002/gitlab-badges
-```
-
-
-## Configuration
+## 🔧 Configuration
 
 Use environment variables to set login credentials and pushover tokens:
 
@@ -55,32 +42,12 @@ Use environment variables to set login credentials and pushover tokens:
     </tr>
 </table>
 
-#### Example
 
-```bash
-GITLAB_URL=https://gitlab.example.com \
-GITLAB_TOKEN=******************** \
-BADGE_STYLE=flat-square \
-npm start
-```
-
-###### or
-
-```bash
-docker run --rm \
-  -p 8888 \
-  -e 'GITLAB_URL=https://gitlab.example.com' \
-  -e 'GITLAB_TOKEN=********************' \
-  -e 'BADGE_STYLE=flat-square' \
-  sebbo2002/gitlab-badges
-```
-
-
-## API
+## 📑 API
 
 #### `/:projectId/:branch/build`
 
-Generates a badge with the current build state of the latest commit in the given branch. 
+Generates a badge with the current build state of the latest commit in the given branch.
 You'll find your project's ID in the GitLab project settings.
 
 ###### Example
@@ -90,7 +57,7 @@ https://gitlab-badges.example.com/1337/master/build
 
 #### `/:projectId/:branch/coverage`
 
-Generates a badge with the current build coverage of the latest commit in the given branch. 
+Generates a badge with the current build coverage of the latest commit in the given branch.
 You'll find your project's ID in the GitLab project settings.
 
 ###### Example
@@ -106,6 +73,8 @@ Returns all currently cached data as a JSON object.
 
 Returns `pong`. Usually helpful to monitor the server in a very basic way.
 
-## Todo
-- [ ] Unit Tests 🙈
-- [ ] In Code Documentation ✏️
+
+
+## 🙆🏼‍♂️ Copyright and license
+
+Copyright (c) Sebastian Pekarek under the [MIT license](LICENSE).
