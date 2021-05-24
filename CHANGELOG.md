@@ -1,3 +1,5 @@
+# 1.0.0 (2021-05-22)
+
 # 1.0.0-develop.1 (2021-05-20)
 
 # [1.0.0-develop.3](https://github.com/sebbo2002/js-template-test/compare/v1.0.0-develop.2...v1.0.0-develop.3) (2021-05-08)
