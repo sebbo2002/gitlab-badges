@@ -1,6 +1,5 @@
 'use strict';
 
-import States from '../../src/lib/states';
 import assert = require('assert');
 import GitLabStateHelper from '../../src/lib/states';
 

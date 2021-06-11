@@ -9,6 +9,7 @@ on:
 jobs:
   release-bot:
     runs-on: ubuntu-latest
+    if: ${{ github.repository != 'sebbo2002/js-template' }}
     steps:
       - name: ☁️ Checkout Project
         uses: actions/checkout@v2
