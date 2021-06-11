@@ -94,7 +94,6 @@ jobs:
     name: Build Docker Image
     runs-on: ubuntu-latest
     environment: develop
-    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop'
     steps:
       - name: ☁️ Checkout
         uses: actions/checkout@v2
@@ -149,13 +148,15 @@ jobs:
       - name: 🏁 Boot-up Check
         if: github.repository != 'sebbo2002/js-template'
         run: |
-          docker run --rm --name "app" -d \
-            -e 'GITLAB_URL=$GITLAB_URL' \
-            -e '$GITLAB_TOKEN=$GITLAB_TOKEN' \
+          docker run --name "app" -d \
+            -e "GITLAB_URL=$GITLAB_URL" \
+            -e "GITLAB_TOKEN=$GITLAB_TOKEN" \
             $IMAGE
           sleep 5
+          docker logs app
           docker exec app echo "Ok."
           docker stop app
+          docker rm app
         env:
           IMAGE: ghcr.io/${{ github.repository }}:${{ github.sha }}
           GITLAB_URL: ${{ secrets.GITLAB_URL }}
