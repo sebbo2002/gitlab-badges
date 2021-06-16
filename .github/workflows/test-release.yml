@@ -248,7 +248,7 @@ jobs:
           GITLAB_TEST_PROJECT: ${{ secrets.GITLAB_TEST_PROJECT }}
       - name: 🔃 Merge main back into develop
         if: ${{ github.ref == 'refs/heads/main' }}
-        uses: everlytic/branch-merge@1.1.0
+        uses: everlytic/branch-merge@1.1.1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           source_ref: 'main'
