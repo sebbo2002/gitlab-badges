@@ -40,7 +40,7 @@ module.exports = {
             'registries': [
                 {
                     'url': 'docker.io',
-                    'imageName': process.env.DOCKER_REGISTRY_IMAGE,
+                    'imageName': 'docker.io/' + process.env.DOCKER_REGISTRY_IMAGE,
                     'user': 'DOCKER_REGISTRY_USERNAME',
                     'password': 'DOCKER_REGISTRY_TOKEN'
                 }
