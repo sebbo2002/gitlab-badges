@@ -1,5 +1,7 @@
 # [2.0.0-develop.2](https://github.com/sebbo2002/gitlab-badges/compare/v2.0.0-develop.1...v2.0.0-develop.2) (2021-06-19)
 
+# [2.0.0-develop.2](https://github.com/sebbo2002/gitlab-badges/compare/v2.0.0-develop.1...v2.0.0-develop.2) (2021-06-19)
+
 # [2.0.0-develop.2](https://github.com/sebbo2002/gitlab-badges/compare/v2.0.0-develop.1...v2.0.0-develop.2) (2021-06-18)
 
 # [2.0.0-develop.2](https://github.com/sebbo2002/gitlab-badges/compare/v2.0.0-develop.1...v2.0.0-develop.2) (2021-06-18)
