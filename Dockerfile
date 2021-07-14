@@ -1,4 +1,4 @@
-FROM node:lts-alpine@sha256:3689ad4435a413342ccc352170ad0f77433b41173af7fe4c0076f0c9792642cb as build-container
+FROM node:lts-alpine@sha256:fb6cb918cc72869bd625940f42a7d8ae035c4e786d08187b94e8b91c6a534dfd as build-container
 
 WORKDIR "/app"
 
@@ -7,20 +7,22 @@ RUN npm ci
 
 COPY . "/app/"
 RUN npm run build && \
-    rm -rf ./.github ./src ./test && \
+    rm -rf ./.github ./src ./test ./node_modules && \
     ls -la /app
 
 
-FROM node:lts-alpine@sha256:3689ad4435a413342ccc352170ad0f77433b41173af7fe4c0076f0c9792642cb
+FROM node:lts-alpine@sha256:fb6cb918cc72869bd625940f42a7d8ae035c4e786d08187b94e8b91c6a534dfd
 ARG NODE_ENV=production
 ENV NODE_ENV=$NODE_ENV
+WORKDIR "/app"
 
 RUN apk add --no-cache --update dumb-init && \
     ln -s /app/dist/bin/start.js /usr/local/bin/start
 
-COPY --from=build-container "/app" "/app"
+COPY --from=build-container /app/package*.json "/app/"
+RUN npm ci --only-production
 
-WORKDIR "/app"
+COPY --from=build-container "/app" "/app"
 USER node
 
 ENTRYPOINT ["/usr/bin/dumb-init", "--"]

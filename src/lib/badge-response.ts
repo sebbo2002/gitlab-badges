@@ -14,7 +14,7 @@ export default class BadgeResponse {
         }
     }
 
-    sendBadge(res: Response, badge: string) {
+    sendBadge(res: Response, badge: string): void {
         if (!badge) {
             res.sendStatus(404);
             return;
@@ -27,7 +27,7 @@ export default class BadgeResponse {
         res.send(badge);
     }
 
-    sendError(res: Response, label: string, error?: string) {
+    sendError(res: Response, label: string, error?: string): void {
         this.sendBadge(res, makeBadge({
             label,
             message: error || 'error',
@@ -36,7 +36,7 @@ export default class BadgeResponse {
         }));
     }
 
-    send(res: Response, label: string, value: string, color: string) {
+    send(res: Response, label: string, value: string, color: string): void {
         this.sendBadge(res, makeBadge({
             label,
             message: value || '-',
