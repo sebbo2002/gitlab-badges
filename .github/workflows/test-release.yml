@@ -104,10 +104,6 @@ jobs:
       - name: 🔧 Set up Buildx
         id: buildx
         uses: docker/setup-buildx-action@master
-        with:
-          version: "https://github.com/docker/buildx.git#67bd6f4dc82a9cd96f34133dab3f6f7af803bb14"
-          driver-opts: image=moby/buildkit:master
-          buildkitd-flags: --debug
       - name: 🔐 Login to GitHub Container Registry
         uses: docker/login-action@v1
         with:
@@ -134,8 +130,6 @@ jobs:
           pull: true
           push: true
           tags: ghcr.io/${{ github.repository }}:build-container-${{ github.sha }}
-          cache-from: type=gha
-          cache-to: type=gha
       - name: 🪄 Build and push (2/2)
         id: build
         uses: docker/build-push-action@v2
@@ -154,11 +148,9 @@ jobs:
             org.opencontainers.image.revision=${{ github.sha }}
             org.opencontainers.image.source=https://github.com/${{ github.repository }}
           cache-from: |
-            type=gha
             type=registry,ref=ghcr.io/${{ github.repository }}:build-container-${{ github.sha }}
             type=registry,ref=ghcr.io/${{ github.repository }}:next
             type=registry,ref=ghcr.io/${{ github.repository }}:latest
-          cache-to: type=gha
       - name: 🔄 Push container to DockerHub
         if: ${{ env.PUSH_TO_DOCKERHUB == true }}
         run: |
@@ -232,8 +224,7 @@ jobs:
         id: github
         run: |
           docker pull "${IMAGE}@${DIGEST}"
-          docker tag "${IMAGE}@${DIGEST}" "${DIGEST}-github:latest"
-          echo "::set-output name=image::${DIGEST}-github:latest"
+          echo "::set-output name=image::${IMAGE}@${DIGEST}"
         env:
           IMAGE: ghcr.io/${{ github.repository }}
           DIGEST: ${{ needs.docker-image.outputs.digest }}
@@ -242,8 +233,7 @@ jobs:
         id: dockerhub
         run: |
           docker pull "${IMAGE}@${DIGEST}"
-          docker tag "${IMAGE}@${DIGEST}" "${DIGEST}-dockerhub:latest"
-          echo "::set-output name=image::${DIGEST}-dockerhub:latest"
+          echo "::set-output name=image::${IMAGE}@${DIGEST}"
         env:
           IMAGE: ${{ github.repository }}
           DIGEST: ${{ needs.docker-image.outputs.digest }}
@@ -259,12 +249,6 @@ jobs:
           PUBLIC_NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           DOCKER_LOCAL_IMAGE_GH: ${{ steps.github.outputs.image }}
           DOCKER_LOCAL_IMAGE_DH: ${{ steps.dockerhub.outputs.image }}
-          DOCKER_REGISTRY_IMAGE: ${{ github.repository }}
-          DOCKER_REGISTRY_USERNAME: ${{ github.repository_owner }}
-          DOCKER_REGISTRY_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
-          GITHUB_REGISTRY_IMAGE: ghcr.io/${{ github.repository }}
-          GITHUB_REGISTRY_USERNAME: ${{ github.repository_owner }}
-          GITHUB_REGISTRY_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITLAB_URL: ${{ secrets.GITLAB_URL }}
           GITLAB_TOKEN: ${{ secrets.GITLAB_TOKEN }}
           GITLAB_TEST_PROJECT: ${{ secrets.GITLAB_TEST_PROJECT }}
