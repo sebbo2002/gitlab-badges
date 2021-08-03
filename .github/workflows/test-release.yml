@@ -165,7 +165,7 @@ jobs:
           SOURCE: ghcr.io/${{ github.repository }}:${{ github.sha }}
           TARGET: ${{ github.repository }}:${{ github.sha }}
       - name: 🏁 Boot-up Check
-        if: github.repository != 'sebbo2002/js-template'
+        if: github.repository != 'sebbo2002/js-template' && secrets.GITLAB_URL && secrets.GITLAB_TOKEN
         run: |
           docker run --name "app" -d \
             -e "GITLAB_URL=$GITLAB_URL" \
