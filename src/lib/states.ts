@@ -104,7 +104,7 @@ export default class GitLabStateHelper {
                 count += 1;
 
                 if (item.validTill <= now) {
-                    this.refreshState(i).catch(error => {
+                    this.refreshState(i).catch(() => {
                         // ignore error
                     });
                 }
