@@ -1,10 +1,10 @@
 {
-  "author": "Sebastian Pekarek <ahshuuyiexeujaoyaega@e.sebbo.net>",
+  "author": "Sebastian Pekarek <mail@sebbo.net>",
   "bin": {
     "gitlab-badges": "./dist/bin/start.js"
   },
   "bugs": {
-    "url": "https://github.com/sebbo2002/template/issues"
+    "url": "https://github.com/sebbo2002/gitlab-badges/issues"
   },
   "dependencies": {
     "badge-maker": "^3.3.0",
