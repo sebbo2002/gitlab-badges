@@ -1,8 +1,9 @@
 name: Test & Release
 on:
   push:
-    branches-ignore:
-      - gh-pages
+    branches:
+      - develop
+      - main
   pull_request: null
 
 jobs:
@@ -21,13 +22,7 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node }}
-      - name: 🔧 Setup npm cache
-        uses: actions/cache@v2
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
+          cache: 'npm'
       - name: 📦 Install dependencies
         run: npm ci
       - name: ⏳ Run tests
@@ -48,14 +43,7 @@ jobs:
       - name: 🔧 Setup node.js
         uses: actions/setup-node@v2
         with:
-          node-version: ${{ matrix.node }}
-      - name: 🔧 Setup npm cache
-        uses: actions/cache@v2
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
+          cache: 'npm'
       - name: 📦 Install dependencies
         run: npm ci
       - name: 🔍 Run linter
@@ -77,14 +65,7 @@ jobs:
       - name: 🔧 Setup node.js
         uses: actions/setup-node@v2
         with:
-          node-version: ${{ matrix.node }}
-      - name: 🔧 Setup npm cache
-        uses: actions/cache@v2
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
+          cache: 'npm'
       - name: 📦 Install dependencies
         run: npm ci
       - name: 🕵️‍♀️ Run license checker
@@ -112,7 +93,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 🔐 Login to DockerHub
         uses: docker/login-action@v1
-        if: ${{ env.PUSH_TO_DOCKERHUB == true }}
+        if: ${{ env.PUSH_TO_DOCKERHUB == 'true' }}
         with:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
@@ -156,7 +137,7 @@ jobs:
             type=registry,ref=ghcr.io/${{ github.repository }}:latest
           cache-to: type=gha,mode=max
       - name: 🔄 Push container to DockerHub
-        if: ${{ env.PUSH_TO_DOCKERHUB == true }}
+        if: ${{ env.PUSH_TO_DOCKERHUB == 'true' }}
         run: |
           docker pull $SOURCE
           docker tag $SOURCE $TARGET
@@ -186,6 +167,7 @@ jobs:
   release:
     name: Release
     runs-on: ubuntu-latest
+    concurrency: release
     env:
       PUSH_TO_DOCKERHUB: ${{ (github.repository != 'sebbo2002/js-template') && (secrets.DOCKERHUB_TOKEN != null) }}
     needs:
@@ -201,14 +183,7 @@ jobs:
       - name: 🔧 Setup node.js
         uses: actions/setup-node@v2
         with:
-          node-version: ${{ matrix.node }}
-      - name: 🔧 Setup npm cache
-        uses: actions/cache@v2
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
+          cache: 'npm'
       - name: 📦 Install dependencies
         run: npm ci
       - name: 📂 Create docs folder
@@ -233,7 +208,7 @@ jobs:
           IMAGE: ghcr.io/${{ github.repository }}
           DIGEST: ${{ needs.docker-image.outputs.digest }}
       - name: ⬇️ Pull Docker Hub Containers
-        if: ${{ env.PUSH_TO_DOCKERHUB == true }}
+        if: ${{ env.PUSH_TO_DOCKERHUB == 'true' }}
         id: dockerhub
         run: |
           docker pull "${IMAGE}@${DIGEST}"

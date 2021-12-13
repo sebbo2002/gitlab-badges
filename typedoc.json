@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./src/lib/index.ts"],
+    "entryPoints": ["./src/bin/start.ts"],
     "exclude": [],
     "excludeInternal": true,
     "excludePrivate": true,
@@ -9,5 +9,5 @@
     "out": "./docs/reference",
     "plugin": [],
     "readme": "README.md",
-    "theme": "minimal"
+    "theme": "default"
 }

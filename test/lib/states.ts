@@ -1,6 +1,6 @@
 'use strict';
 
-import assert = require('assert');
+import assert from 'assert';
 import GitLabStateHelper from '../../src/lib/states';
 
 const projectId = process.env.GITLAB_TEST_PROJECT;
