@@ -1,3 +1,10 @@
+## [2.0.1](https://github.com/sebbo2002/gitlab-badges/compare/v2.0.0...v2.0.1) (2021-12-14)
+
+
+### Bug Fixes
+
+* **CI:** Fix DockerHub container release ([01b7534](https://github.com/sebbo2002/gitlab-badges/commit/01b753406d1f1ef24a949c7d7b946d99b779d013))
+
 ## [2.0.1-develop.4](https://github.com/sebbo2002/gitlab-badges/compare/v2.0.1-develop.3...v2.0.1-develop.4) (2021-12-05)
 
 
