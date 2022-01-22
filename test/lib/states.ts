@@ -20,7 +20,7 @@ describe('States', function () {
     });
 
     describe('getState()', function() {
-        this.timeout(5000);
+        this.timeout(30000);
         it('should work', projectId ? async function() {
             const states = await new GitLabStateHelper();
 
