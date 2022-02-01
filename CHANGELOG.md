@@ -1,3 +1,10 @@
+## [2.0.2](https://github.com/sebbo2002/gitlab-badges/compare/v2.0.1...v2.0.2) (2022-02-01)
+
+
+### Bug Fixes
+
+* **build:** Bump node-fetch to 2.6.7 ([53f2952](https://github.com/sebbo2002/gitlab-badges/commit/53f2952e1b3db978a7c27abfb99dbd42583b4076))
+
 ## [2.0.2-develop.1](https://github.com/sebbo2002/gitlab-badges/compare/v2.0.1...v2.0.2-develop.1) (2022-01-22)
 
 
