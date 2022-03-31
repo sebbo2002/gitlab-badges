@@ -5,9 +5,9 @@
     "passes": 3,
     "pending": 0,
     "failures": 0,
-    "start": "2022-01-22T13:48:26.394Z",
-    "end": "2022-01-22T13:48:27.647Z",
-    "duration": 1253,
+    "start": "2022-03-31T14:40:25.992Z",
+    "end": "2022-03-31T14:40:27.122Z",
+    "duration": 1130,
     "testsRegistered": 3,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,16 +18,16 @@
   },
   "results": [
     {
-      "uuid": "4d3eaea5-1f62-4546-bdfa-b8b189f13f74",
+      "uuid": "f7618b4a-96d4-493e-9940-a9955b67e236",
       "title": "",
-      "fullFile": "",
-      "file": "",
+      "fullFile": "/home/runner/work/gitlab-badges/gitlab-badges/test/lib/states.ts",
+      "file": "/test/lib/states.ts",
       "beforeHooks": [],
       "afterHooks": [],
       "tests": [],
       "suites": [
         {
-          "uuid": "a1aa07fa-2447-46c4-81ca-46bb10883f7b",
+          "uuid": "f46c65c6-484b-4a97-9043-7e1aff0690ac",
           "title": "States",
           "fullFile": "/home/runner/work/gitlab-badges/gitlab-badges/test/lib/states.ts",
           "file": "/test/lib/states.ts",
@@ -36,7 +36,7 @@
           "tests": [],
           "suites": [
             {
-              "uuid": "e11ffdfc-4a92-4460-a02d-20e1595c0aff",
+              "uuid": "4df3bc27-2a5a-4534-bc29-0e795f805b51",
               "title": "constructor()",
               "fullFile": "/home/runner/work/gitlab-badges/gitlab-badges/test/lib/states.ts",
               "file": "/test/lib/states.ts",
@@ -47,7 +47,7 @@
                   "title": "should throw an error with invalid url",
                   "fullTitle": "States constructor() should throw an error with invalid url",
                   "timedOut": false,
-                  "duration": 1,
+                  "duration": 0,
                   "state": "passed",
                   "speed": "fast",
                   "pass": true,
@@ -56,8 +56,8 @@
                   "context": null,
                   "code": "assert_1.default.throws(() => {\n    new states_1.default('ftp://foo.bar', '****');\n}, /Invalid url!/);",
                   "err": {},
-                  "uuid": "08f600f2-5241-4456-b7fd-7fd38efb033f",
-                  "parentUUID": "e11ffdfc-4a92-4460-a02d-20e1595c0aff",
+                  "uuid": "085d30a2-01a9-440b-8157-f8257c93dc2a",
+                  "parentUUID": "4df3bc27-2a5a-4534-bc29-0e795f805b51",
                   "isHook": false,
                   "skipped": false
                 },
@@ -74,27 +74,27 @@
                   "context": null,
                   "code": "assert_1.default.throws(() => {\n    new states_1.default('http://localhost', '****');\n}, /Invalid token!/);",
                   "err": {},
-                  "uuid": "c97a8a44-0f85-46e6-b6c5-3ba22a5ad310",
-                  "parentUUID": "e11ffdfc-4a92-4460-a02d-20e1595c0aff",
+                  "uuid": "05204c8c-6703-409a-aa59-7084ff455ff2",
+                  "parentUUID": "4df3bc27-2a5a-4534-bc29-0e795f805b51",
                   "isHook": false,
                   "skipped": false
                 }
               ],
               "suites": [],
               "passes": [
-                "08f600f2-5241-4456-b7fd-7fd38efb033f",
-                "c97a8a44-0f85-46e6-b6c5-3ba22a5ad310"
+                "085d30a2-01a9-440b-8157-f8257c93dc2a",
+                "05204c8c-6703-409a-aa59-7084ff455ff2"
               ],
               "failures": [],
               "pending": [],
               "skipped": [],
-              "duration": 1,
+              "duration": 0,
               "root": false,
               "rootEmpty": false,
               "_timeout": 2000
             },
             {
-              "uuid": "3a6eca11-2c19-47fd-ad5a-09db55ebb90f",
+              "uuid": "15f4a753-a462-42dd-9a8a-d22c3033ef6c",
               "title": "getState()",
               "fullFile": "/home/runner/work/gitlab-badges/gitlab-badges/test/lib/states.ts",
               "file": "/test/lib/states.ts",
@@ -105,7 +105,7 @@
                   "title": "should work",
                   "fullTitle": "States getState() should work",
                   "timedOut": false,
-                  "duration": 1245,
+                  "duration": 1123,
                   "state": "passed",
                   "speed": "slow",
                   "pass": true,
@@ -114,20 +114,20 @@
                   "context": null,
                   "code": "return __awaiter(this, void 0, void 0, function* () {\n    const states = yield new states_1.default();\n    const result1 = yield states.getState(projectId, 'develop');\n    assert_1.default.strictEqual(typeof result1.status, 'string');\n    assert_1.default.ok(typeof result1.coverage === 'string' || result1.coverage === undefined);\n    const result2 = yield states.getState(projectId, 'develop');\n    assert_1.default.strictEqual(result2.status, result1.status);\n    assert_1.default.strictEqual(result2.coverage, result1.coverage);\n});",
                   "err": {},
-                  "uuid": "1370911a-81cc-49bf-bbd1-7d82cec40b5f",
-                  "parentUUID": "3a6eca11-2c19-47fd-ad5a-09db55ebb90f",
+                  "uuid": "48bf420e-a022-4109-a4a2-7c2951c85c86",
+                  "parentUUID": "15f4a753-a462-42dd-9a8a-d22c3033ef6c",
                   "isHook": false,
                   "skipped": false
                 }
               ],
               "suites": [],
               "passes": [
-                "1370911a-81cc-49bf-bbd1-7d82cec40b5f"
+                "48bf420e-a022-4109-a4a2-7c2951c85c86"
               ],
               "failures": [],
               "pending": [],
               "skipped": [],
-              "duration": 1245,
+              "duration": 1123,
               "root": false,
               "rootEmpty": false,
               "_timeout": 30000
@@ -155,7 +155,7 @@
   ],
   "meta": {
     "mocha": {
-      "version": "9.1.3"
+      "version": "9.2.2"
     },
     "mochawesome": {
       "options": {
@@ -167,11 +167,11 @@
         "useInlineDiffs": false,
         "code": true
       },
-      "version": "7.0.1"
+      "version": "7.1.1"
     },
     "marge": {
       "options": null,
-      "version": "6.0.1"
+      "version": "6.1.1"
     }
   }
 }
