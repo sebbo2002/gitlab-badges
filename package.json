@@ -25,7 +25,7 @@
     "@types/node-fetch": "^2.5.12",
     "@typescript-eslint/eslint-plugin": "^5.17.0",
     "@typescript-eslint/parser": "^5.17.0",
-    "eslint": "^8.11.0",
+    "eslint": "^8.13.0",
     "eslint-plugin-jsonc": "^2.2.1",
     "license-checker": "^25.0.1",
     "mocha": "^9.2.2",
@@ -34,7 +34,7 @@
     "semantic-release-license": "^1.0.3",
     "source-map-support": "^0.5.21",
     "ts-node": "^10.7.0",
-    "typedoc": "^0.22.13",
+    "typedoc": "^0.22.15",
     "typescript": "^4.6.3"
   },
   "engines": {
