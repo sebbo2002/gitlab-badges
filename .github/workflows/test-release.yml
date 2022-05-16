@@ -113,9 +113,9 @@ jobs:
           pull: true
           push: true
           tags: ghcr.io/${{ github.repository }}:build-container-${{ github.sha }}
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
-      - name: 🪄 Build and push (1/2; #2)
+          cache-from: ghcr.io/${{ github.repository }}:build-container-cache
+          cache-to: ghcr.io/${{ github.repository }}:build-container-cache
+      - name: 🪄 Build and push (1/2, second try)
         uses: docker/build-push-action@v3
         continue-on-error: true
         if: steps.docker-build-1-1.outcome=='failure'
@@ -129,9 +129,9 @@ jobs:
           pull: true
           push: true
           tags: ghcr.io/${{ github.repository }}:build-container-${{ github.sha }}
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
-      - name: 🪄 Build and push (1/2; #3)
+          cache-from: ghcr.io/${{ github.repository }}:build-container-cache
+          cache-to: ghcr.io/${{ github.repository }}:build-container-cache
+      - name: 🪄 Build and push (1/2, third try)
         uses: docker/build-push-action@v3
         continue-on-error: true
         if: steps.docker-build-1-2.outcome=='failure'
@@ -145,8 +145,8 @@ jobs:
           pull: true
           push: true
           tags: ghcr.io/${{ github.repository }}:build-container-${{ github.sha }}
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
+          cache-from: ghcr.io/${{ github.repository }}:build-container-cache
+          cache-to: ghcr.io/${{ github.repository }}:build-container-cache
       - name: 🪄 Build and push (1/2; Summary)
         if: always()
         run: |
@@ -174,12 +174,11 @@ jobs:
             org.opencontainers.image.revision=${{ github.sha }}
             org.opencontainers.image.source=https://github.com/${{ github.repository }}
           cache-from: |
-            type=gha
-            type=registry,ref=ghcr.io/${{ github.repository }}:build-container-${{ github.sha }}
-            type=registry,ref=ghcr.io/${{ github.repository }}:next
-            type=registry,ref=ghcr.io/${{ github.repository }}:latest
-          cache-to: type=gha,mode=max
-      - name: 🪄 Build and push (2/2; #2)
+            ghcr.io/${{ github.repository }}:build-container-${{ github.sha }}
+            ghcr.io/${{ github.repository }}:build-container-cache
+            ghcr.io/${{ github.repository }}:cache
+          cache-to: ghcr.io/${{ github.repository }}:cache
+      - name: 🪄 Build and push (2/2; second try)
         uses: docker/build-push-action@v3
         continue-on-error: true
         if: steps.docker-build-2-1.outcome=='failure'
@@ -199,12 +198,11 @@ jobs:
             org.opencontainers.image.revision=${{ github.sha }}
             org.opencontainers.image.source=https://github.com/${{ github.repository }}
           cache-from: |
-            type=gha
-            type=registry,ref=ghcr.io/${{ github.repository }}:build-container-${{ github.sha }}
-            type=registry,ref=ghcr.io/${{ github.repository }}:next
-            type=registry,ref=ghcr.io/${{ github.repository }}:latest
-          cache-to: type=gha,mode=max
-      - name: 🪄 Build and push (2/2; #3)
+            ghcr.io/${{ github.repository }}:build-container-${{ github.sha }}
+            ghcr.io/${{ github.repository }}:build-container-cache
+            ghcr.io/${{ github.repository }}:cache
+          cache-to: ghcr.io/${{ github.repository }}:cache
+      - name: 🪄 Build and push (2/2; third try)
         uses: docker/build-push-action@v3
         if: steps.docker-build-2-2.outcome=='failure'
         continue-on-error: true
@@ -224,11 +222,10 @@ jobs:
             org.opencontainers.image.revision=${{ github.sha }}
             org.opencontainers.image.source=https://github.com/${{ github.repository }}
           cache-from: |
-            type=gha
-            type=registry,ref=ghcr.io/${{ github.repository }}:build-container-${{ github.sha }}
-            type=registry,ref=ghcr.io/${{ github.repository }}:next
-            type=registry,ref=ghcr.io/${{ github.repository }}:latest
-          cache-to: type=gha,mode=max
+            ghcr.io/${{ github.repository }}:build-container-${{ github.sha }}
+            ghcr.io/${{ github.repository }}:build-container-cache
+            ghcr.io/${{ github.repository }}:cache
+          cache-to: ghcr.io/${{ github.repository }}:cache
       - name: 🪄 Build and push (2/2; Summary)
         if: always()
         id: docker-build-2
