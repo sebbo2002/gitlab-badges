@@ -95,7 +95,7 @@ jobs:
         id: docker-build-1-1
         with:
           context: .
-          github-token: ${{ secrets.GH_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           target: build-container
           builder: ${{ steps.buildx.outputs.name }}
           platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/s390x,linux/arm/v7,linux/arm/v6
@@ -111,7 +111,7 @@ jobs:
         id: docker-build-1-2
         with:
           context: .
-          github-token: ${{ secrets.GH_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           target: build-container
           builder: ${{ steps.buildx.outputs.name }}
           platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/s390x,linux/arm/v7,linux/arm/v6
@@ -127,7 +127,7 @@ jobs:
         id: docker-build-1-3
         with:
           context: .
-          github-token: ${{ secrets.GH_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           target: build-container
           builder: ${{ steps.buildx.outputs.name }}
           platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/s390x,linux/arm/v7,linux/arm/v6
@@ -150,7 +150,7 @@ jobs:
         id: docker-build-2-1
         with:
           context: .
-          github-token: ${{ secrets.GH_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           builder: ${{ steps.buildx.outputs.name }}
           platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/s390x,linux/arm/v7,linux/arm/v6
           pull: true
@@ -174,7 +174,7 @@ jobs:
         id: docker-build-2-2
         with:
           context: .
-          github-token: ${{ secrets.GH_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           builder: ${{ steps.buildx.outputs.name }}
           platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/s390x,linux/arm/v7,linux/arm/v6
           pull: true
@@ -198,7 +198,7 @@ jobs:
         id: docker-build-2-3
         with:
           context: .
-          github-token: ${{ secrets.GH_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           builder: ${{ steps.buildx.outputs.name }}
           platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/s390x,linux/arm/v7,linux/arm/v6
           pull: true
@@ -266,6 +266,11 @@ jobs:
       - license-checker
       - docker-image
     if: ${{ github.repository != 'sebbo2002/js-template' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop') }}
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+      packages: write
     steps:
       - name: ☁️ Checkout Project
         uses: actions/checkout@v3
@@ -309,10 +314,10 @@ jobs:
         run: BRANCH=${GITHUB_REF#refs/heads/} npx semantic-release
         env:
           GH_REPO: ${{ github.repository }}
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GH_OWNER: ${{ github.repository_owner }}
           GITHUB_NPM_CONFIG_REGISTRY: https://npm.pkg.github.com/
-          GITHUB_NPM_TOKEN: ${{ secrets.GH_TOKEN }}
+          GITHUB_NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PUBLIC_NPM_CONFIG_REGISTRY: https://registry.npmjs.org
           PUBLIC_NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           DOCKER_LOCAL_IMAGE_GH: ${{ steps.github.outputs.image }}
