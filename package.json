@@ -13,7 +13,7 @@
   },
   "description": "It's like a very tiny shields.io (without website) for your private GitLab instance…",
   "devDependencies": {
-    "@amanda-mitchell/semantic-release-npm-multiple": "^3.2.0",
+    "@amanda-mitchell/semantic-release-npm-multiple": "^3.2.1",
     "@qiwi/semantic-release-gh-pages-plugin": "^5.2.0",
     "@sebbo2002/semantic-release-docker": "^1.0.0-develop.1",
     "@semantic-release/changelog": "^6.0.1",
@@ -25,7 +25,7 @@
     "@types/node-fetch": "^2.5.12",
     "@typescript-eslint/eslint-plugin": "^5.22.0",
     "@typescript-eslint/parser": "^5.22.0",
-    "eslint": "^8.13.0",
+    "eslint": "^8.15.0",
     "eslint-plugin-jsonc": "^2.2.1",
     "license-checker": "^25.0.1",
     "mocha": "^10.0.0",
