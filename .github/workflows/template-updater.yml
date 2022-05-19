@@ -1,4 +1,4 @@
-name: TemplateUpdater
+name: Template Updater
 on:
   workflow_dispatch:
   schedule:
@@ -11,8 +11,9 @@ jobs:
     permissions:
       contents: write
       pull-requests: write
+      actions: write
     steps:
-      - name: 🤖 is-semantic-release
+      - name: 🤖 template-updater
         uses: sebbo2002/action-template-updater@develop
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
