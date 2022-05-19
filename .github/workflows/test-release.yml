@@ -101,9 +101,9 @@ jobs:
           platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/s390x,linux/arm/v7,linux/arm/v6
           pull: true
           push: true
-          tags: ghcr.io/${{ github.repository }}:build-container-${{ github.sha }}
-          cache-from: ghcr.io/${{ github.repository }}:build-container-cache
-          cache-to: ghcr.io/${{ github.repository }}:build-container-cache
+          tags: ghcr.io/${{ github.repository }}:build-container-${{ hashFiles('package*.json') }}
+          cache-from: ghcr.io/${{ github.repository }}:build-container-${{ hashFiles('package*.json') }}
+          cache-to: type=inline
       - name: 🪄 Build and push (1/2, second try)
         uses: docker/build-push-action@v3
         continue-on-error: true
@@ -117,9 +117,9 @@ jobs:
           platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/s390x,linux/arm/v7,linux/arm/v6
           pull: true
           push: true
-          tags: ghcr.io/${{ github.repository }}:build-container-${{ github.sha }}
-          cache-from: ghcr.io/${{ github.repository }}:build-container-cache
-          cache-to: ghcr.io/${{ github.repository }}:build-container-cache
+          tags: ghcr.io/${{ github.repository }}:build-container-${{ hashFiles('package*.json') }}
+          cache-from: ghcr.io/${{ github.repository }}:build-container-${{ hashFiles('package*.json') }}
+          cache-to: type=inline
       - name: 🪄 Build and push (1/2, third try)
         uses: docker/build-push-action@v3
         continue-on-error: true
@@ -133,9 +133,9 @@ jobs:
           platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/s390x,linux/arm/v7,linux/arm/v6
           pull: true
           push: true
-          tags: ghcr.io/${{ github.repository }}:build-container-${{ github.sha }}
-          cache-from: ghcr.io/${{ github.repository }}:build-container-cache
-          cache-to: ghcr.io/${{ github.repository }}:build-container-cache
+          tags: ghcr.io/${{ github.repository }}:build-container-${{ hashFiles('package*.json') }}
+          cache-from: ghcr.io/${{ github.repository }}:build-container-${{ hashFiles('package*.json') }}
+          cache-to: type=inline
       - name: 🪄 Build and push (1/2; Summary)
         if: always()
         run: |
@@ -155,7 +155,9 @@ jobs:
           platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/s390x,linux/arm/v7,linux/arm/v6
           pull: true
           push: true
-          tags: ghcr.io/${{ github.repository }}:${{ github.sha }}
+          tags: |
+            ghcr.io/${{ github.repository }}:${{ github.sha }}
+            ghcr.io/${{ github.repository }}:cache-${{ hashFiles('package*.json') }}
           labels: |
             org.opencontainers.image.authors=${{ github.repository_owner }}
             org.opencontainers.image.created=${{ steps.buildVars.outputs.date }}
@@ -163,10 +165,9 @@ jobs:
             org.opencontainers.image.revision=${{ github.sha }}
             org.opencontainers.image.source=https://github.com/${{ github.repository }}
           cache-from: |
-            ghcr.io/${{ github.repository }}:build-container-${{ github.sha }}
-            ghcr.io/${{ github.repository }}:build-container-cache
-            ghcr.io/${{ github.repository }}:cache
-          cache-to: ghcr.io/${{ github.repository }}:cache
+            ghcr.io/${{ github.repository }}:build-container-${{ hashFiles('package*.json') }}
+            ghcr.io/${{ github.repository }}:cache-${{ hashFiles('package*.json') }}
+            ghcr.io/${{ github.repository }}:next
       - name: 🪄 Build and push (2/2; second try)
         uses: docker/build-push-action@v3
         continue-on-error: true
@@ -179,7 +180,9 @@ jobs:
           platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/s390x,linux/arm/v7,linux/arm/v6
           pull: true
           push: true
-          tags: ghcr.io/${{ github.repository }}:${{ github.sha }}
+          tags: |
+            ghcr.io/${{ github.repository }}:${{ github.sha }}
+            ghcr.io/${{ github.repository }}:cache-${{ hashFiles('package*.json') }}
           labels: |
             org.opencontainers.image.authors=${{ github.repository_owner }}
             org.opencontainers.image.created=${{ steps.buildVars.outputs.date }}
@@ -187,10 +190,9 @@ jobs:
             org.opencontainers.image.revision=${{ github.sha }}
             org.opencontainers.image.source=https://github.com/${{ github.repository }}
           cache-from: |
-            ghcr.io/${{ github.repository }}:build-container-${{ github.sha }}
-            ghcr.io/${{ github.repository }}:build-container-cache
-            ghcr.io/${{ github.repository }}:cache
-          cache-to: ghcr.io/${{ github.repository }}:cache
+            ghcr.io/${{ github.repository }}:build-container-${{ hashFiles('package*.json') }}
+            ghcr.io/${{ github.repository }}:cache-${{ hashFiles('package*.json') }}
+            ghcr.io/${{ github.repository }}:next
       - name: 🪄 Build and push (2/2; third try)
         uses: docker/build-push-action@v3
         if: steps.docker-build-2-2.outcome=='failure'
@@ -203,7 +205,9 @@ jobs:
           platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/s390x,linux/arm/v7,linux/arm/v6
           pull: true
           push: true
-          tags: ghcr.io/${{ github.repository }}:${{ github.sha }}
+          tags: |
+            ghcr.io/${{ github.repository }}:${{ github.sha }}
+            ghcr.io/${{ github.repository }}:cache-${{ hashFiles('package*.json') }}
           labels: |
             org.opencontainers.image.authors=${{ github.repository_owner }}
             org.opencontainers.image.created=${{ steps.buildVars.outputs.date }}
@@ -211,10 +215,10 @@ jobs:
             org.opencontainers.image.revision=${{ github.sha }}
             org.opencontainers.image.source=https://github.com/${{ github.repository }}
           cache-from: |
-            ghcr.io/${{ github.repository }}:build-container-${{ github.sha }}
-            ghcr.io/${{ github.repository }}:build-container-cache
-            ghcr.io/${{ github.repository }}:cache
-          cache-to: ghcr.io/${{ github.repository }}:cache
+            ghcr.io/${{ github.repository }}:build-container-${{ hashFiles('package*.json') }}
+            ghcr.io/${{ github.repository }}:cache-${{ hashFiles('package*.json') }}
+            ghcr.io/${{ github.repository }}:next
+          cache-to: type=inline
       - name: 🪄 Build and push (2/2; Summary)
         if: always()
         id: docker-build-2
