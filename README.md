@@ -1,47 +1,78 @@
-# template
+# GitLab Badges
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE)
 
-Here would be a very short description of the project. So in this example it would be a short information that this is
-a template that I use to start new projects and services.
-
-
-## 🚨 Template Usage Checklist
-- [ ] Update project name in `package.json`
-- [ ] Create `main` and `develop` branches
-- [ ] Set `develop` as default branch
-- [ ] Create Docker Repository
-    - [ ] Add Repository Description
-    - [ ] Add secret: `DOCKERHUB_TOKEN`
-- [ ] Create npm Repository with `npm publish --access public`
-    - [ ] Add secret: `NPM_TOKEN`
-- [ ] Go through repo settings
+This server acts like a very tiny shields.io to generate SVG badges for your private GitLab instance. Uses shield.io's [gh-badges](https://www.npmjs.com/package/gh-badges) to generate them.
 
 
 ## 📦 Installation
 
-	git clone https://github.com/sebbo2002/template.git
-    cd ./template
+	npm i -g @sebbo2002/gitlab-badges
+    gitlab-badges
 
-    npm install
+    # OR
 
-
-## ⚡️ Quick Start
-
-This is where it would normally say how to use the project.
-This could be a code example for a library or instructions on how to use a CLI tool.
+    docker run -e GITLAB_URL=https://gitlab.example.com -e GITLAB_TOKEN=**** sebbo2002/gitlab-badges
 
 
-## 📑 API-Reference
+## 🔧 Configuration
 
-Is there an API that needs to be documented? Then here would be a nice place for it. If there is external documentation,
-you can link it here ([example](https://github.com/sebbo2002/ical-generator/#-api-reference)).
+Use environment variables to set login credentials and pushover tokens:
+
+<table>
+    <tr>
+        <th scope="row">GITLAB_URL</td>
+        <td>GitLab URL (https://gitlab.example.com)</td>
+    </tr>
+    <tr>
+        <th scope="row">GITLAB_TOKEN</td>
+        <td>A private Token which is used to query the GitLab API</td>
+    </tr>
+    <tr>
+        <th scope="row">PORT</td>
+        <td>Port to listen to, default to 8888</td>
+    </tr>
+    <tr>
+        <th scope="row">BADGE_STYLE</td>
+        <td>Optional, allows to specify the used [badge style](http://shields.io/#styles)</td>
+    </tr>
+    <tr>
+        <th scope="row">MAX_CACHE_SIZE</td>
+        <td>Optional, to setup the living cache size, defaults to 50</td>
+    </tr>
+</table>
 
 
-## 🙋 FAQ
+## 📑 API
 
-### What's `1` + `2`
-It's `3` 🎉
+#### `/:projectId/:branch/build`
+
+Generates a badge with the current build state of the latest commit in the given branch.
+You'll find your project's ID in the GitLab project settings.
+
+###### Example
+```
+https://gitlab-badges.example.com/1337/master/build
+```
+
+#### `/:projectId/:branch/coverage`
+
+Generates a badge with the current build coverage of the latest commit in the given branch.
+You'll find your project's ID in the GitLab project settings.
+
+###### Example
+```
+https://gitlab-badges.example.com/1337/master/coverage
+```
+
+#### `/cache`
+
+Returns all currently cached data as a JSON object.
+
+#### `/ping`
+
+Returns `pong`. Usually helpful to monitor the server in a very basic way.
+
 
 
 ## 🙆🏼‍♂️ Copyright and license
