@@ -1,3 +1,10 @@
+## [2.0.5](https://github.com/sebbo2002/gitlab-badges/compare/v2.0.4...v2.0.5) (2022-05-21)
+
+
+### Reverts
+
+* Revert "ci: Remove docker setup" ([655068b](https://github.com/sebbo2002/gitlab-badges/commit/655068b3b9c6139181ae87421db5f8144fae3e18))
+
 ## [2.0.5-develop.1](https://github.com/sebbo2002/gitlab-badges/compare/v2.0.4...v2.0.5-develop.1) (2022-05-16)
 
 ## [2.0.4](https://github.com/sebbo2002/gitlab-badges/compare/v2.0.3...v2.0.4) (2022-05-04)
