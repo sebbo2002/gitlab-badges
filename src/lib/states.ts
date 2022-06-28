@@ -1,7 +1,7 @@
 'use strict';
 
 import fetch from 'node-fetch';
-import {StateCacheItem, StateCachePipeline} from './types';
+import { StateCacheItem, StateCachePipeline } from './types.js';
 import Timeout = NodeJS.Timeout;
 
 export default class GitLabStateHelper {
@@ -11,7 +11,7 @@ export default class GitLabStateHelper {
     private cache: Record<string, StateCacheItem> = {};
     private timeout?: Timeout;
 
-    constructor(url?: string, token?: string) {
+    constructor (url?: string, token?: string) {
         this.url = url || process.env.GITLAB_URL || '';
         if (typeof this.url !== 'string' || (
             this.url.substr(0, 7) !== 'http://' &&
@@ -28,7 +28,7 @@ export default class GitLabStateHelper {
         this.maxCacheSize = parseInt(process.env.MAX_CACHE_SIZE || '', 10) || 50;
     }
 
-    public async getState(projectId: string, branch: string): Promise<StateCachePipeline> {
+    public async getState (projectId: string, branch: string): Promise<StateCachePipeline> {
         if (!this.cache[projectId]?.pipelines[branch]) {
             await this.refreshState(projectId);
         }
@@ -41,11 +41,11 @@ export default class GitLabStateHelper {
         throw new Error('Unable to find branch!');
     }
 
-    public getCachedStates(): Record<string, StateCacheItem> {
+    public getCachedStates (): Record<string, StateCacheItem> {
         return this.cache;
     }
 
-    protected async refreshState(projectId: string): Promise<void> {
+    protected async refreshState (projectId: string): Promise<void> {
         const body = await this.request('/projects/' + projectId + '/pipelines?scope=branches');
         if (!Array.isArray(body)) {
             throw new Error('Unexpected answer from GitLab.');
@@ -67,8 +67,7 @@ export default class GitLabStateHelper {
                     status: pipeline.status,
                     coverage: extendedPipeline.coverage || undefined
                 };
-            }
-            catch (error) {
+            } catch (error) {
                 result[pipeline.ref] = {
                     status: pipeline.status,
                     coverage: undefined
@@ -83,12 +82,12 @@ export default class GitLabStateHelper {
             pipelines: result
         };
 
-        if(this.timeout) {
+        if (this.timeout) {
             this.refreshNextState();
         }
     }
 
-    protected refreshNextState(): void {
+    protected refreshNextState (): void {
         const now = new Date().getTime();
         let count = 0;
         let when = 120000;
@@ -107,8 +106,7 @@ export default class GitLabStateHelper {
                     this.refreshState(i).catch(() => {
                         // ignore error
                     });
-                }
-                else if (inms < when) {
+                } else if (inms < when) {
                     when = inms;
                 }
 
@@ -126,7 +124,7 @@ export default class GitLabStateHelper {
         this.timeout = setTimeout(() => this.refreshNextState(), when);
     }
 
-    protected async request(path: string): Promise<unknown> {
+    protected async request (path: string): Promise<unknown> {
         const result = await fetch(this.url + '/api/v4' + path, {
             headers: {
                 'PRIVATE-TOKEN': this.token
@@ -136,18 +134,16 @@ export default class GitLabStateHelper {
         return result.json();
     }
 
-    public start(): void {
+    public start (): void {
         if (!this.timeout) {
             this.refreshNextState();
         }
     }
 
-    public stop(): void {
+    public stop (): void {
         if (this.timeout) {
             clearTimeout(this.timeout);
             delete this.timeout;
         }
     }
 }
-
-module.exports = GitLabStateHelper;
