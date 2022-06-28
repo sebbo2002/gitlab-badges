@@ -1,3 +1,15 @@
+# [3.0.0-develop.1](https://github.com/sebbo2002/gitlab-badges/compare/v2.0.6-develop.4...v3.0.0-develop.1) (2022-06-28)
+
+
+### Build System
+
+* Native ESM support ([7b86a4f](https://github.com/sebbo2002/gitlab-badges/commit/7b86a4f1187c387a3a5792e1fb72d822b04e3631))
+
+
+### BREAKING CHANGES
+
+* Only Support for node.js ^12.20.0 || >=14.13.1
+
 ## [2.0.6-develop.4](https://github.com/sebbo2002/gitlab-badges/compare/v2.0.6-develop.3...v2.0.6-develop.4) (2022-06-22)
 
 ## [2.0.6-develop.3](https://github.com/sebbo2002/gitlab-badges/compare/v2.0.6-develop.2...v2.0.6-develop.3) (2022-06-10)
