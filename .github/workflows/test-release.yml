@@ -7,6 +7,7 @@ jobs:
   tests:
     name: Unit Tests
     runs-on: ubuntu-latest
+    environment: develop
     if: github.repository != 'sebbo2002/js-template' && (contains(toJson(github.event.commits.*.message), '[skip ci]') == false || github.ref == 'refs/heads/main')
     strategy:
       matrix:
@@ -23,10 +24,15 @@ jobs:
         run: npm ci
       - name: ⏳ Run tests
         run: npm run test
+        env:
+          GITLAB_URL: ${{ secrets.GITLAB_URL }}
+          GITLAB_TOKEN: ${{ secrets.GITLAB_TOKEN }}
+          GITLAB_TEST_PROJECT: ${{ secrets.GITLAB_TEST_PROJECT }}
 
   coverage:
     name: Code Coverage / Lint
     runs-on: ubuntu-latest
+    environment: develop
     if: github.repository != 'sebbo2002/js-template' && (contains(toJson(github.event.commits.*.message), '[skip ci]') == false || github.ref == 'refs/heads/main')
     steps:
       - name: ☁️ Checkout Project
@@ -41,6 +47,10 @@ jobs:
         run: npm run lint
       - name: ⚙️ Build project
         run: npm run build-all
+        env:
+          GITLAB_URL: ${{ secrets.GITLAB_URL }}
+          GITLAB_TOKEN: ${{ secrets.GITLAB_TOKEN }}
+          GITLAB_TEST_PROJECT: ${{ secrets.GITLAB_TEST_PROJECT }}
 
   license-checker:
     name: License Checker
@@ -61,6 +71,7 @@ jobs:
   docker-image:
     name: Build Docker Image
     runs-on: ubuntu-latest
+    environment: develop
     env:
       PUSH_TO_DOCKERHUB: ${{ (github.repository != 'sebbo2002/js-template') && (secrets.DOCKERHUB_TOKEN != null) }}
     steps:
@@ -242,9 +253,12 @@ jobs:
           SOURCE: ghcr.io/${{ github.repository }}:${{ github.sha }}
           TARGET: ${{ github.repository }}:${{ github.sha }}
       - name: 🏁 Boot-up Check
-        if: github.repository != 'sebbo2002/js-template'
+        if: github.repository != 'sebbo2002/js-template' && env.GITLAB_URL && env.GITLAB_TOKEN
         run: |
-          docker run --name "app" -d $IMAGE
+          docker run --name "app" -d \
+            -e "GITLAB_URL=$GITLAB_URL" \
+            -e "GITLAB_TOKEN=$GITLAB_TOKEN" \
+            $IMAGE
           sleep 5
           docker logs app
           docker exec app echo "Ok."
@@ -252,6 +266,8 @@ jobs:
           docker rm app
         env:
           IMAGE: ghcr.io/${{ github.repository }}:${{ github.sha }}
+          GITLAB_URL: ${{ secrets.GITLAB_URL }}
+          GITLAB_TOKEN: ${{ secrets.GITLAB_TOKEN }}
     outputs:
       digest: ${{ steps.docker-build-2.outputs.digest }}
 
@@ -266,6 +282,7 @@ jobs:
       - tests
       - license-checker
       - docker-image
+    environment: develop
     if: ${{ github.repository != 'sebbo2002/js-template' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop') }}
     steps:
       - name: ☁️ Checkout Project
@@ -318,6 +335,9 @@ jobs:
           PUBLIC_NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           DOCKER_LOCAL_IMAGE_GH: ${{ steps.github.outputs.image }}
           DOCKER_LOCAL_IMAGE_DH: ${{ steps.dockerhub.outputs.image }}
+          GITLAB_URL: ${{ secrets.GITLAB_URL }}
+          GITLAB_TOKEN: ${{ secrets.GITLAB_TOKEN }}
+          GITLAB_TEST_PROJECT: ${{ secrets.GITLAB_TEST_PROJECT }}
       - name: 🔃 Merge main back into develop
         if: ${{ github.ref == 'refs/heads/main' }}
         uses: everlytic/branch-merge@1.1.2
