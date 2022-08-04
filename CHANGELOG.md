@@ -1,3 +1,5 @@
+## [3.0.1-develop.1](https://github.com/sebbo2002/gitlab-badges/compare/v3.0.0...v3.0.1-develop.1) (2022-08-04)
+
 # [3.0.0](https://github.com/sebbo2002/gitlab-badges/compare/v2.0.5...v3.0.0) (2022-07-25)
 
 
