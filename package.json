@@ -20,7 +20,7 @@
     "@semantic-release/exec": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
     "@types/express": "^4.17.14",
-    "@types/mocha": "^9.1.1",
+    "@types/mocha": "^10.0.0",
     "@types/node": "^18.7.16",
     "@typescript-eslint/eslint-plugin": "^5.36.2",
     "@typescript-eslint/parser": "^5.36.2",
@@ -35,7 +35,7 @@
     "source-map-support": "^0.5.21",
     "ts-node": "^10.8.2",
     "typedoc": "^0.23.15",
-    "typescript": "^4.8.3"
+    "typescript": "^4.8.4"
   },
   "engines": {
     "node": "^12.20.0 || >=14.13.1"
