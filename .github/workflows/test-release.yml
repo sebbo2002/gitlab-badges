@@ -239,13 +239,26 @@ jobs:
           fi
       - name: 🔄 Push container to DockerHub
         if: ${{ env.PUSH_TO_DOCKERHUB == 'true' }}
-        run: |
-          docker pull $SOURCE
-          docker tag $SOURCE $TARGET
-          docker push $TARGET
-        env:
-          SOURCE: ghcr.io/${{ github.repository }}:${{ github.sha }}
-          TARGET: ${{ github.repository }}:${{ github.sha }}
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          builder: ${{ steps.buildx.outputs.name }}
+          platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/s390x,linux/arm/v7,linux/arm/v6
+          push: true
+          tags: |
+            ${{ github.repository }}:${{ github.sha }}
+          labels: |
+            org.opencontainers.image.authors=${{ github.repository_owner }}
+            org.opencontainers.image.created=${{ steps.buildVars.outputs.date }}
+            org.opencontainers.image.ref.name=${{ github.ref }}
+            org.opencontainers.image.revision=${{ github.sha }}
+            org.opencontainers.image.source=https://github.com/${{ github.repository }}
+          cache-from: |
+            ghcr.io/${{ github.repository }}:${{ github.sha }}
+            ghcr.io/${{ github.repository }}:cache-${{ hashFiles('package*.json') }}
+            ghcr.io/${{ github.repository }}:build-container-${{ hashFiles('package*.json') }}
+          cache-to: type=inline
       - name: 🏁 Boot-up Check
         if: github.repository != 'sebbo2002/js-template'
         run: |
