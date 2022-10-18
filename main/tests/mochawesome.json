@@ -5,9 +5,9 @@
     "passes": 3,
     "pending": 0,
     "failures": 0,
-    "start": "2022-08-11T19:36:48.303Z",
-    "end": "2022-08-11T19:36:50.076Z",
-    "duration": 1773,
+    "start": "2022-10-18T08:52:49.225Z",
+    "end": "2022-10-18T08:52:50.366Z",
+    "duration": 1141,
     "testsRegistered": 3,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "8a8a36f3-5ba8-4a8a-a035-9867368feb0c",
+      "uuid": "22f959c9-4f99-40b3-9bc6-740f14284ce7",
       "title": "",
       "fullFile": "/home/runner/work/gitlab-badges/gitlab-badges/test/lib/states.ts",
       "file": "/test/lib/states.ts",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "1157b9be-3666-4016-acfd-8a5ceb4d1420",
+          "uuid": "710c10be-61b2-498a-8f86-30242b56dc12",
           "title": "States",
           "fullFile": "/home/runner/work/gitlab-badges/gitlab-badges/test/lib/states.ts",
           "file": "/test/lib/states.ts",
@@ -36,7 +36,7 @@
           "tests": [],
           "suites": [
             {
-              "uuid": "62c3eca1-e9f0-4d0f-ba73-3b998580947b",
+              "uuid": "bedf822a-aecb-4ccc-b66f-153d2a28fb55",
               "title": "constructor()",
               "fullFile": "/home/runner/work/gitlab-badges/gitlab-badges/test/lib/states.ts",
               "file": "/test/lib/states.ts",
@@ -56,8 +56,8 @@
                   "context": null,
                   "code": "assert.throws(() => {\n    new GitLabStateHelper('ftp://foo.bar', '****');\n}, /Invalid url!/);",
                   "err": {},
-                  "uuid": "0a2269fe-802d-4756-8fb9-a4154c461a43",
-                  "parentUUID": "62c3eca1-e9f0-4d0f-ba73-3b998580947b",
+                  "uuid": "a840113b-2536-43b7-bdbd-d0900d8e0fea",
+                  "parentUUID": "bedf822a-aecb-4ccc-b66f-153d2a28fb55",
                   "isHook": false,
                   "skipped": false
                 },
@@ -74,16 +74,16 @@
                   "context": null,
                   "code": "assert.throws(() => {\n    new GitLabStateHelper('http://localhost', '****');\n}, /Invalid token!/);",
                   "err": {},
-                  "uuid": "230b23e3-23b1-4ad5-a7a8-534c87fcb532",
-                  "parentUUID": "62c3eca1-e9f0-4d0f-ba73-3b998580947b",
+                  "uuid": "5023171b-2f2e-4ac6-b8a4-9793fce82ac9",
+                  "parentUUID": "bedf822a-aecb-4ccc-b66f-153d2a28fb55",
                   "isHook": false,
                   "skipped": false
                 }
               ],
               "suites": [],
               "passes": [
-                "0a2269fe-802d-4756-8fb9-a4154c461a43",
-                "230b23e3-23b1-4ad5-a7a8-534c87fcb532"
+                "a840113b-2536-43b7-bdbd-d0900d8e0fea",
+                "5023171b-2f2e-4ac6-b8a4-9793fce82ac9"
               ],
               "failures": [],
               "pending": [],
@@ -94,7 +94,7 @@
               "_timeout": 2000
             },
             {
-              "uuid": "f28fc448-4e9c-4fca-bb85-2c0243c13d16",
+              "uuid": "85d3ea51-8667-4be8-ad76-68e7c4a287c5",
               "title": "getState()",
               "fullFile": "/home/runner/work/gitlab-badges/gitlab-badges/test/lib/states.ts",
               "file": "/test/lib/states.ts",
@@ -105,7 +105,7 @@
                   "title": "should work",
                   "fullTitle": "States getState() should work",
                   "timedOut": false,
-                  "duration": 1768,
+                  "duration": 1129,
                   "state": "passed",
                   "speed": "slow",
                   "pass": true,
@@ -114,20 +114,20 @@
                   "context": null,
                   "code": "return __awaiter(this, void 0, void 0, function* () {\n    const states = yield new GitLabStateHelper();\n    const result1 = yield states.getState(projectId, 'develop');\n    assert.strictEqual(typeof result1.status, 'string');\n    assert.ok(typeof result1.coverage === 'string' || result1.coverage === undefined);\n    const result2 = yield states.getState(projectId, 'develop');\n    assert.strictEqual(result2.status, result1.status);\n    assert.strictEqual(result2.coverage, result1.coverage);\n});",
                   "err": {},
-                  "uuid": "7affa31a-0daa-4910-923c-201e823d0c54",
-                  "parentUUID": "f28fc448-4e9c-4fca-bb85-2c0243c13d16",
+                  "uuid": "72cacaf2-ff9d-4260-a4ae-bd8631bfc690",
+                  "parentUUID": "85d3ea51-8667-4be8-ad76-68e7c4a287c5",
                   "isHook": false,
                   "skipped": false
                 }
               ],
               "suites": [],
               "passes": [
-                "7affa31a-0daa-4910-923c-201e823d0c54"
+                "72cacaf2-ff9d-4260-a4ae-bd8631bfc690"
               ],
               "failures": [],
               "pending": [],
               "skipped": [],
-              "duration": 1768,
+              "duration": 1129,
               "root": false,
               "rootEmpty": false,
               "_timeout": 30000
