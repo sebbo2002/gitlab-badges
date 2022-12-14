@@ -249,6 +249,7 @@ jobs:
              exit 1
           fi
       - name: 🔄 Push container to DockerHub
+        id: docker-build-dh
         if: ${{ env.PUSH_TO_DOCKERHUB == 'true' }}
         uses: docker/build-push-action@v3
         with:
@@ -287,7 +288,8 @@ jobs:
           GITLAB_URL: ${{ secrets.GITLAB_URL }}
           GITLAB_TOKEN: ${{ secrets.GITLAB_TOKEN }}
     outputs:
-      digest: ${{ steps.docker-build-2.outputs.digest }}
+      digest-gh: ${{ steps.docker-build-2.outputs.digest }}
+      digest-dh: ${{ steps.docker-build-dh.outputs.digest }}
 
   release:
     name: Release
