@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <!DOCTYPE coverage SYSTEM "http://cobertura.sourceforge.net/xml/coverage-04.dtd">
-<coverage lines-valid="346" lines-covered="92" line-rate="0.2658" branches-valid="28" branches-covered="17" branch-rate="0.6071" timestamp="1676233626141" complexity="0" version="0.1">
+<coverage lines-valid="346" lines-covered="92" line-rate="0.2658" branches-valid="28" branches-covered="17" branch-rate="0.6071" timestamp="1679140307206" complexity="0" version="0.1">
   <sources>
     <source>/home/runner/work/gitlab-badges/gitlab-badges</source>
   </sources>
