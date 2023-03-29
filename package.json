@@ -25,8 +25,8 @@
     "@typescript-eslint/eslint-plugin": "^5.54.1",
     "@typescript-eslint/parser": "^5.54.1",
     "c8": "^7.13.0",
-    "eslint": "^8.35.0",
-    "eslint-plugin-jsonc": "^2.6.0",
+    "eslint": "^8.36.0",
+    "eslint-plugin-jsonc": "^2.7.0",
     "esm": "^3.2.25",
     "license-checker": "^25.0.1",
     "mocha": "^10.2.0",
@@ -34,8 +34,8 @@
     "semantic-release-license": "^1.0.3",
     "source-map-support": "^0.5.21",
     "ts-node": "^10.8.2",
-    "typedoc": "^0.23.26",
-    "typescript": "^4.9.5"
+    "typedoc": "^0.23.28",
+    "typescript": "^5.0.2"
   },
   "engines": {
     "node": "^14.8.0 || >=16.0.0"
