@@ -17,7 +17,7 @@ ENV NODE_ENV=$NODE_ENV
 WORKDIR "/app"
 
 RUN apk add --no-cache --update dumb-init && \
-    ln -s /app/dist/bin/start.js /usr/local/bin/start
+    ln -s /app/dist/start.js /usr/local/bin/start
 
 COPY --from=build-container /app/package*.json "/app/"
 RUN npm ci --only-production

@@ -34,13 +34,13 @@
     "semantic-release-license": "^1.0.3",
     "source-map-support": "^0.5.21",
     "ts-node": "^10.8.2",
+    "tsup": "^6.7.0",
     "typedoc": "^0.23.28",
     "typescript": "^5.0.2"
   },
   "engines": {
     "node": "^14.8.0 || >=16.0.0"
   },
-  "exports": "./dist/index.js",
   "files": [
     "/dist"
   ],
@@ -52,7 +52,7 @@
     "url": "https://github.com/sebbo2002/gitlab-badges.git"
   },
   "scripts": {
-    "build": "tsc && chmod +x ./dist/bin/*.js",
+    "build": "tsup",
     "build-all": "./.github/workflows/build.sh",
     "coverage": "c8 mocha",
     "develop": "ts-node ./src/bin/start.ts",
