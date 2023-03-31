@@ -1,3 +1,15 @@
+# [4.0.0](https://github.com/sebbo2002/gitlab-badges/compare/v3.0.3...v4.0.0) (2023-03-31)
+
+
+### Build System
+
+* Deprecate node.js 12 ([426588b](https://github.com/sebbo2002/gitlab-badges/commit/426588b4bb7bde2924bbc92006ca839e960872e1))
+
+
+### BREAKING CHANGES
+
+* From now on, only node.js ^14.8.0 || >=16.0.0 are supported
+
 # [4.0.0-develop.2](https://github.com/sebbo2002/gitlab-badges/compare/v4.0.0-develop.1...v4.0.0-develop.2) (2023-03-18)
 
 # [4.0.0-develop.1](https://github.com/sebbo2002/gitlab-badges/compare/v3.0.4-develop.2...v4.0.0-develop.1) (2023-02-12)
