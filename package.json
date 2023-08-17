@@ -34,7 +34,7 @@
     "semantic-release-license": "^1.0.3",
     "source-map-support": "^0.5.21",
     "ts-node": "^10.8.2",
-    "tsup": "^7.1.0",
+    "tsup": "^7.2.0",
     "typedoc": "^0.24.8",
     "typescript": "^5.1.5"
   },
