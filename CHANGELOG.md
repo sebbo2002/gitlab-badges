@@ -1,3 +1,10 @@
+## [5.0.2-develop.3](https://github.com/sebbo2002/gitlab-badges/compare/v5.0.2-develop.2...v5.0.2-develop.3) (2023-10-18)
+
+
+### Reverts
+
+* Revert "ci: Run tests with node.js v18, v20 and v21" ([1b245a5](https://github.com/sebbo2002/gitlab-badges/commit/1b245a58587bc6871e8b1633beff1f1bca05970f))
+
 ## [5.0.2-develop.2](https://github.com/sebbo2002/gitlab-badges/compare/v5.0.2-develop.1...v5.0.2-develop.2) (2023-09-27)
 
 ## [5.0.2-develop.1](https://github.com/sebbo2002/gitlab-badges/compare/v5.0.1...v5.0.2-develop.1) (2023-08-24)
