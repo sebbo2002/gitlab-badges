@@ -1,3 +1,11 @@
+## [5.0.2](https://github.com/sebbo2002/gitlab-badges/compare/v5.0.1...v5.0.2) (2023-10-25)
+
+
+### Reverts
+
+* Revert "ci: Run tests with node.js v18, v20 and v21" ([405853b](https://github.com/sebbo2002/gitlab-badges/commit/405853bbd7fc55eb224ff657af7dab26f9482d88))
+* Revert "ci: Downgrade is-semantic-release till it's fixed" ([91c2ab5](https://github.com/sebbo2002/gitlab-badges/commit/91c2ab59d0559a060c11d07973382c465dd3345d))
+
 ## [5.0.2-develop.3](https://github.com/sebbo2002/gitlab-badges/compare/v5.0.2-develop.2...v5.0.2-develop.3) (2023-10-18)
 
 
