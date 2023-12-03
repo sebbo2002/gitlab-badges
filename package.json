@@ -54,7 +54,7 @@
     "build": "tsup",
     "build-all": "./.github/workflows/build.sh",
     "coverage": "c8 mocha",
-    "develop": "ts-node ./src/bin/start.ts",
+    "develop": "TS_NODE_TRANSPILE_ONLY=true node --no-warnings --enable-source-maps --loader ts-node/esm src/bin/start.ts",
     "license-check": "license-checker --production --summary",
     "lint": "eslint . --ext .ts",
     "start": "node ./dist/bin/start.js",
