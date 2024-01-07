@@ -1,6 +1,5 @@
 'use strict';
 
-import fetch from 'node-fetch';
 import { StateCacheItem, StateCachePipeline } from './types.js';
 import Timeout = NodeJS.Timeout;
 
