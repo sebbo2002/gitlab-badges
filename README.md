@@ -16,6 +16,10 @@ a template that I use to start new projects and services.
 - [ ] Create npm Repository with `npm publish --access public`
     - [ ] Add secret: `NPM_TOKEN`
 - [ ] Go through repo settings
+    - [ ] Add `main` protected branch
+        - Require a pull request before merging
+        - Require `Release` status checks to pass before merging
+        - Lock branch
 
 
 ## 📦 Installation
