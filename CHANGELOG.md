@@ -1,3 +1,5 @@
+## [5.1.1](https://github.com/sebbo2002/gitlab-badges/compare/v5.1.0...v5.1.1) (2024-03-26)
+
 # [5.1.0](https://github.com/sebbo2002/gitlab-badges/compare/v5.0.2...v5.1.0) (2024-01-07)
 
 
