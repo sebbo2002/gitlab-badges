@@ -7,7 +7,7 @@
     "url": "https://github.com/sebbo2002/gitlab-badges/issues"
   },
   "dependencies": {
-    "badge-maker": "^3.3.0",
+    "badge-maker": "^4.0.0",
     "express": "^4.19.2"
   },
   "description": "It's like a very tiny shields.io (without website) for your private GitLab instance…",
