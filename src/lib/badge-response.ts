@@ -27,10 +27,10 @@ export default class BadgeResponse {
         res.send(badge);
     }
 
-    sendError (res: Response, label: string, error?: string): void {
+    sendError (res: Response, label: string, error?: string | unknown): void {
         this.sendBadge(res, makeBadge({
             label,
-            message: error || 'error',
+            message: String(error) || 'error',
             color: 'red',
             style: this.style
         }));
