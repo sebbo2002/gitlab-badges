@@ -22,7 +22,7 @@ describe('States', function () {
     describe('getState()', function() {
         this.timeout(30000);
         it('should work', projectId ? async function() {
-            const states = await new GitLabStateHelper();
+            const states = new GitLabStateHelper();
 
             const result1 = await states.getState(projectId, 'develop');
             assert.strictEqual(typeof result1.status, 'string');

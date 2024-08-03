@@ -50,6 +50,7 @@ export default class GitLabStateHelper {
             throw new Error('Unexpected answer from GitLab.');
         }
 
+        let error: unknown;
         let cacheDuration = 5;
         const result: Record<string, StateCachePipeline> = {};
         await Promise.all(body.map(async pipeline => {
@@ -66,7 +67,8 @@ export default class GitLabStateHelper {
                     status: pipeline.status,
                     coverage: extendedPipeline.coverage || undefined
                 };
-            } catch (error) {
+            } catch (err) {
+                error = err;
                 result[pipeline.ref] = {
                     status: pipeline.status,
                     coverage: undefined
@@ -83,6 +85,10 @@ export default class GitLabStateHelper {
 
         if (this.timeout) {
             this.refreshNextState();
+        }
+
+        if (error) {
+            throw error;
         }
     }
 
