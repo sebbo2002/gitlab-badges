@@ -57,12 +57,12 @@ class AppServer {
                 result = await this.states.getState(req.params.projectId, req.params.branch);
             }
             catch(error) {
-                this.badges.sendError(res, label);
+                this.badges.sendError(res, label, error);
                 return;
             }
 
             if (['running', 'pending'].indexOf(result.status) > -1) {
-                this.badges.send(res, label, status, 'lightgrey');
+                this.badges.send(res, label, result.status, 'lightgrey');
             }
             else if (result.status === 'success') {
                 this.badges.send(res, label, 'passing', 'brightgreen');
@@ -80,7 +80,7 @@ class AppServer {
                 result = await this.states.getState(req.params.projectId, req.params.branch);
             }
             catch(error) {
-                this.badges.sendError(res, label);
+                this.badges.sendError(res, label, error);
                 return;
             }
 
