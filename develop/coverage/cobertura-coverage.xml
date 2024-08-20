@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <!DOCTYPE coverage SYSTEM "http://cobertura.sourceforge.net/xml/coverage-04.dtd">
-<coverage lines-valid="222" lines-covered="91" line-rate="0.40990000000000004" branches-valid="27" branches-covered="16" branch-rate="0.5925" timestamp="1723537826107" complexity="0" version="0.1">
+<coverage lines-valid="222" lines-covered="91" line-rate="0.40990000000000004" branches-valid="27" branches-covered="16" branch-rate="0.5925" timestamp="1724158599008" complexity="0" version="0.1">
   <sources>
     <source>/home/runner/work/gitlab-badges/gitlab-badges</source>
   </sources>
@@ -97,9 +97,9 @@
                 <line number="95" hits="0"/>
               </lines>
             </method>
-            <method name="request" hits="7" signature="()V">
+            <method name="request" hits="6" signature="()V">
               <lines>
-                <line number="132" hits="7"/>
+                <line number="132" hits="6"/>
               </lines>
             </method>
             <method name="start" hits="0" signature="()V">
@@ -170,20 +170,20 @@
             <line number="54" hits="1" branch="false"/>
             <line number="55" hits="1" branch="false"/>
             <line number="56" hits="1" branch="true" condition-coverage="100% (1/1)"/>
-            <line number="57" hits="6" branch="true" condition-coverage="0% (0/1)"/>
+            <line number="57" hits="5" branch="true" condition-coverage="0% (0/1)"/>
             <line number="58" hits="0" branch="false"/>
             <line number="59" hits="0" branch="false"/>
-            <line number="60" hits="6" branch="true" condition-coverage="100% (1/1)"/>
-            <line number="61" hits="5" branch="false"/>
-            <line number="62" hits="5" branch="false"/>
-            <line number="63" hits="6" branch="false"/>
-            <line number="64" hits="6" branch="false"/>
-            <line number="65" hits="6" branch="false"/>
-            <line number="66" hits="6" branch="false"/>
-            <line number="67" hits="6" branch="false"/>
-            <line number="68" hits="6" branch="false"/>
-            <line number="69" hits="6" branch="false"/>
-            <line number="70" hits="6" branch="true" condition-coverage="0% (0/1)"/>
+            <line number="60" hits="5" branch="true" condition-coverage="100% (1/1)"/>
+            <line number="61" hits="4" branch="false"/>
+            <line number="62" hits="4" branch="false"/>
+            <line number="63" hits="5" branch="false"/>
+            <line number="64" hits="5" branch="false"/>
+            <line number="65" hits="5" branch="false"/>
+            <line number="66" hits="5" branch="false"/>
+            <line number="67" hits="5" branch="false"/>
+            <line number="68" hits="5" branch="false"/>
+            <line number="69" hits="5" branch="false"/>
+            <line number="70" hits="5" branch="true" condition-coverage="0% (0/1)"/>
             <line number="71" hits="0" branch="false"/>
             <line number="72" hits="0" branch="false"/>
             <line number="73" hits="0" branch="false"/>
@@ -246,14 +246,14 @@
             <line number="130" hits="0" branch="false"/>
             <line number="131" hits="3" branch="false"/>
             <line number="132" hits="3" branch="true" condition-coverage="100% (1/1)"/>
-            <line number="133" hits="7" branch="false"/>
-            <line number="134" hits="7" branch="false"/>
-            <line number="135" hits="7" branch="false"/>
-            <line number="136" hits="7" branch="false"/>
-            <line number="137" hits="7" branch="false"/>
-            <line number="138" hits="7" branch="false"/>
-            <line number="139" hits="7" branch="false"/>
-            <line number="140" hits="7" branch="false"/>
+            <line number="133" hits="6" branch="false"/>
+            <line number="134" hits="6" branch="false"/>
+            <line number="135" hits="6" branch="false"/>
+            <line number="136" hits="6" branch="false"/>
+            <line number="137" hits="6" branch="false"/>
+            <line number="138" hits="6" branch="false"/>
+            <line number="139" hits="6" branch="false"/>
+            <line number="140" hits="6" branch="false"/>
             <line number="141" hits="3" branch="false"/>
             <line number="142" hits="3" branch="false"/>
             <line number="143" hits="0" branch="false"/>
