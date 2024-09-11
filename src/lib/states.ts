@@ -1,6 +1,6 @@
 'use strict';
 
-import { StateCacheItem, StateCachePipeline } from './types.js';
+import { type StateCacheItem, type StateCachePipeline } from './types.js';
 import Timeout = NodeJS.Timeout;
 
 export default class GitLabStateHelper {

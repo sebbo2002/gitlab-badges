@@ -1,8 +1,8 @@
 'use strict';
 
 import { makeBadge } from 'badge-maker';
-import { Response } from 'express';
-import { Style } from './types.js';
+import { type Response } from 'express';
+import { type Style } from './types.js';
 
 export default class BadgeResponse {
     private readonly style: Style = 'plastic';
