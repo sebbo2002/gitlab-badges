@@ -1,11 +1,11 @@
 <?xml version="1.0" ?>
 <!DOCTYPE coverage SYSTEM "http://cobertura.sourceforge.net/xml/coverage-04.dtd">
-<coverage lines-valid="222" lines-covered="91" line-rate="0.40990000000000004" branches-valid="27" branches-covered="16" branch-rate="0.5925" timestamp="1723657590196" complexity="0" version="0.1">
+<coverage lines-valid="222" lines-covered="115" line-rate="0.518" branches-valid="29" branches-covered="19" branch-rate="0.6551" timestamp="1726079200352" complexity="0" version="0.1">
   <sources>
     <source>/home/runner/work/gitlab-badges/gitlab-badges</source>
   </sources>
   <packages>
-    <package name="main" line-rate="0.40990000000000004" branch-rate="0.5925">
+    <package name="main" line-rate="0.518" branch-rate="0.6551">
       <classes>
         <class name="badge-response.ts" filename="src/lib/badge-response.ts" line-rate="0" branch-rate="0">
           <methods>
@@ -65,11 +65,21 @@
             <line number="47" hits="0" branch="false"/>
           </lines>
         </class>
-        <class name="states.ts" filename="src/lib/states.ts" line-rate="0.5909" branch-rate="0.64">
+        <class name="states.ts" filename="src/lib/states.ts" line-rate="0.6103000000000001" branch-rate="0.6666">
           <methods>
+            <method name="__name" hits="1" signature="()V">
+              <lines>
+                <line number="3" hits="1"/>
+              </lines>
+            </method>
             <method name="&lt;instance_members_initializer&gt;" hits="3" signature="()V">
               <lines>
                 <line number="6" hits="3"/>
+              </lines>
+            </method>
+            <method name="&lt;static_initializer&gt;" hits="1" signature="()V">
+              <lines>
+                <line number="1" hits="1"/>
               </lines>
             </method>
             <method name="GitLabStateHelper" hits="3" signature="()V">
@@ -114,9 +124,9 @@
             </method>
           </methods>
           <lines>
-            <line number="1" hits="1" branch="false"/>
+            <line number="1" hits="1" branch="true" condition-coverage="100% (1/1)"/>
             <line number="2" hits="1" branch="false"/>
-            <line number="3" hits="1" branch="false"/>
+            <line number="3" hits="1" branch="true" condition-coverage="100% (1/1)"/>
             <line number="4" hits="1" branch="false"/>
             <line number="5" hits="1" branch="false"/>
             <line number="6" hits="1" branch="true" condition-coverage="100% (1/1)"/>
@@ -134,8 +144,8 @@
             <line number="18" hits="3" branch="true" condition-coverage="100% (1/1)"/>
             <line number="19" hits="1" branch="false"/>
             <line number="20" hits="1" branch="false"/>
-            <line number="21" hits="2" branch="true" condition-coverage="100% (1/1)"/>
-            <line number="22" hits="3" branch="true" condition-coverage="50% (1/2)"/>
+            <line number="21" hits="3" branch="false"/>
+            <line number="22" hits="3" branch="true" condition-coverage="66.66666666666666% (2/3)"/>
             <line number="23" hits="3" branch="true" condition-coverage="100% (1/1)"/>
             <line number="24" hits="1" branch="false"/>
             <line number="25" hits="1" branch="false"/>
@@ -152,9 +162,9 @@
             <line number="36" hits="2" branch="false"/>
             <line number="37" hits="2" branch="false"/>
             <line number="38" hits="2" branch="false"/>
-            <line number="39" hits="0" branch="true" condition-coverage="0% (0/1)"/>
-            <line number="40" hits="0" branch="false"/>
-            <line number="41" hits="0" branch="false"/>
+            <line number="39" hits="2" branch="false"/>
+            <line number="40" hits="2" branch="true" condition-coverage="0% (0/1)"/>
+            <line number="41" hits="2" branch="false"/>
             <line number="42" hits="3" branch="false"/>
             <line number="43" hits="3" branch="false"/>
             <line number="44" hits="0" branch="false"/>
@@ -270,36 +280,31 @@
             <line number="154" hits="3" branch="false"/>
           </lines>
         </class>
-        <class name="types.ts" filename="src/lib/types.ts" line-rate="0" branch-rate="0">
+        <class name="types.ts" filename="src/lib/types.ts" line-rate="1" branch-rate="1">
           <methods>
-            <method name="(empty-report)" hits="0" signature="()V">
-              <lines>
-                <line number="1" hits="0"/>
-              </lines>
-            </method>
           </methods>
           <lines>
-            <line number="1" hits="0" branch="true" condition-coverage="0% (0/1)"/>
-            <line number="2" hits="0" branch="false"/>
-            <line number="3" hits="0" branch="false"/>
-            <line number="4" hits="0" branch="false"/>
-            <line number="5" hits="0" branch="false"/>
-            <line number="6" hits="0" branch="false"/>
-            <line number="7" hits="0" branch="false"/>
-            <line number="8" hits="0" branch="false"/>
-            <line number="9" hits="0" branch="false"/>
-            <line number="10" hits="0" branch="false"/>
-            <line number="11" hits="0" branch="false"/>
-            <line number="12" hits="0" branch="false"/>
-            <line number="13" hits="0" branch="false"/>
-            <line number="14" hits="0" branch="false"/>
-            <line number="15" hits="0" branch="false"/>
-            <line number="16" hits="0" branch="false"/>
-            <line number="17" hits="0" branch="false"/>
-            <line number="18" hits="0" branch="false"/>
-            <line number="19" hits="0" branch="false"/>
-            <line number="20" hits="0" branch="false"/>
-            <line number="21" hits="0" branch="false"/>
+            <line number="1" hits="1" branch="false"/>
+            <line number="2" hits="1" branch="false"/>
+            <line number="3" hits="1" branch="false"/>
+            <line number="4" hits="1" branch="false"/>
+            <line number="5" hits="1" branch="false"/>
+            <line number="6" hits="1" branch="false"/>
+            <line number="7" hits="1" branch="false"/>
+            <line number="8" hits="1" branch="false"/>
+            <line number="9" hits="1" branch="false"/>
+            <line number="10" hits="1" branch="false"/>
+            <line number="11" hits="1" branch="false"/>
+            <line number="12" hits="1" branch="false"/>
+            <line number="13" hits="1" branch="true" condition-coverage="100% (1/1)"/>
+            <line number="14" hits="1" branch="false"/>
+            <line number="15" hits="1" branch="false"/>
+            <line number="16" hits="1" branch="false"/>
+            <line number="17" hits="1" branch="false"/>
+            <line number="18" hits="1" branch="false"/>
+            <line number="19" hits="1" branch="false"/>
+            <line number="20" hits="1" branch="false"/>
+            <line number="21" hits="1" branch="false"/>
           </lines>
         </class>
       </classes>
