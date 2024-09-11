@@ -1,3 +1,17 @@
+# [6.0.0](https://github.com/sebbo2002/gitlab-badges/compare/v5.1.2...v6.0.0) (2024-09-11)
+
+
+### chore
+
+* Drop support for node.js v19 and v21 ([2fff079](https://github.com/sebbo2002/gitlab-badges/commit/2fff079040a377fbe9ecc340388f6a29b863cf80))
+
+
+### BREAKING CHANGES
+
+* Drop node.js v21 Support
+
+These node.js versions are no longer supported. For more information see https://nodejs.dev/en/about/releases/
+
 ## [5.1.2](https://github.com/sebbo2002/gitlab-badges/compare/v5.1.1...v5.1.2) (2024-08-14)
 
 ## [5.1.1](https://github.com/sebbo2002/gitlab-badges/compare/v5.1.0...v5.1.1) (2024-03-26)
