@@ -12,7 +12,7 @@
   },
   "description": "It's like a very tiny shields.io (without website) for your private GitLab instance…",
   "devDependencies": {
-    "@eslint/js": "^9.13.0",
+    "@eslint/js": "^9.15.0",
     "@qiwi/semantic-release-gh-pages-plugin": "^5.2.12",
     "@sebbo2002/semantic-release-docker": "^5.0.1-develop.4",
     "@semantic-release/changelog": "^6.0.3",
