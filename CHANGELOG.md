@@ -1,3 +1,10 @@
+## [6.0.3](https://github.com/sebbo2002/gitlab-badges/compare/v6.0.2...v6.0.3) (2025-01-09)
+
+
+### Bug Fixes
+
+* **deps:** downgrade eslint to v9.13.0 to resolve typescript-eslint issue ([9a83f35](https://github.com/sebbo2002/gitlab-badges/commit/9a83f35bd76b832b03cdbe9376085d5bff8c1f7b)), closes [#10353](https://github.com/sebbo2002/gitlab-badges/issues/10353) [typescript-eslint/typescript-eslint#10353](https://github.com/typescript-eslint/typescript-eslint/issues/10353)
+
 ## [6.0.2](https://github.com/sebbo2002/gitlab-badges/compare/v6.0.1...v6.0.2) (2024-11-15)
 
 ## [6.0.1](https://github.com/sebbo2002/gitlab-badges/compare/v6.0.0...v6.0.1) (2024-10-16)
