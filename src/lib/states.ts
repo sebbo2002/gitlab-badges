@@ -1,14 +1,13 @@
 'use strict';
 
 import { type StateCacheItem, type StateCachePipeline } from './types.js';
-import Timeout = NodeJS.Timeout;
 
 export default class GitLabStateHelper {
     private readonly url: string;
     private readonly token: string;
     private readonly maxCacheSize: number;
     private cache: Record<string, StateCacheItem> = {};
-    private timeout?: Timeout;
+    private timeout?: NodeJS.Timeout;
 
     constructor (url?: string, token?: string) {
         this.url = url || process.env.GITLAB_URL || '';
