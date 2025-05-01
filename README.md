@@ -4,16 +4,14 @@
 
 This server acts like a very tiny shields.io to generate SVG badges for your private GitLab instance. Uses shield.io's [gh-badges](https://www.npmjs.com/package/gh-badges) to generate them.
 
-
 ## 📦 Installation
 
-	npm i -g @sebbo2002/gitlab-badges
+    npm i -g @sebbo2002/gitlab-badges
     gitlab-badges
 
     # OR
 
     docker run -e GITLAB_URL=https://gitlab.example.com -e GITLAB_TOKEN=**** sebbo2002/gitlab-badges
-
 
 ## 🔧 Configuration
 
@@ -42,7 +40,6 @@ Use environment variables to set login credentials and pushover tokens:
     </tr>
 </table>
 
-
 ## 📑 API
 
 #### `/:projectId/:branch/build`
@@ -51,6 +48,7 @@ Generates a badge with the current build state of the latest commit in the given
 You'll find your project's ID in the GitLab project settings.
 
 ###### Example
+
 ```
 https://gitlab-badges.example.com/1337/master/build
 ```
@@ -61,6 +59,7 @@ Generates a badge with the current build coverage of the latest commit in the gi
 You'll find your project's ID in the GitLab project settings.
 
 ###### Example
+
 ```
 https://gitlab-badges.example.com/1337/master/coverage
 ```
@@ -72,8 +71,6 @@ Returns all currently cached data as a JSON object.
 #### `/ping`
 
 Returns `pong`. Usually helpful to monitor the server in a very basic way.
-
-
 
 ## 🙆🏼‍♂️ Copyright and license
 
