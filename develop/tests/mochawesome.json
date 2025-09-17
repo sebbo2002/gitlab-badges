@@ -5,9 +5,9 @@
     "passes": 3,
     "pending": 0,
     "failures": 0,
-    "start": "2025-09-12T12:25:13.966Z",
-    "end": "2025-09-12T12:25:14.914Z",
-    "duration": 948,
+    "start": "2025-09-17T16:22:21.572Z",
+    "end": "2025-09-17T16:22:23.213Z",
+    "duration": 1641,
     "testsRegistered": 3,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "da94a7cf-9ab0-4e8b-9490-cc8b05f9e0ba",
+      "uuid": "c65c821e-e0e3-4eaf-8e67-277b4f1435fa",
       "title": "",
       "fullFile": "/home/runner/work/gitlab-badges/gitlab-badges/test/lib/states.ts",
       "file": "/test/lib/states.ts",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "1a22703c-82b8-4cb9-abcf-73beafaa9d3c",
+          "uuid": "dfb44eb1-fa3b-4b6b-9c28-0420c7a6be4a",
           "title": "States",
           "fullFile": "/home/runner/work/gitlab-badges/gitlab-badges/test/lib/states.ts",
           "file": "/test/lib/states.ts",
@@ -36,7 +36,7 @@
           "tests": [],
           "suites": [
             {
-              "uuid": "2268160d-ce33-44c4-b9f4-5ce5c58f4197",
+              "uuid": "ca487cdb-e836-4676-8809-757662cf6d50",
               "title": "constructor()",
               "fullFile": "/home/runner/work/gitlab-badges/gitlab-badges/test/lib/states.ts",
               "file": "/test/lib/states.ts",
@@ -47,7 +47,7 @@
                   "title": "should throw an error with invalid url",
                   "fullTitle": "States constructor() should throw an error with invalid url",
                   "timedOut": false,
-                  "duration": 0,
+                  "duration": 1,
                   "state": "passed",
                   "speed": "fast",
                   "pass": true,
@@ -56,8 +56,8 @@
                   "context": null,
                   "code": "import_assert.default.throws(()=>{new import_states.default(\"ftp://foo.bar\",\"****\")},/Invalid url!/)",
                   "err": {},
-                  "uuid": "58b7d68c-9742-42bb-bec4-5a11866cae60",
-                  "parentUUID": "2268160d-ce33-44c4-b9f4-5ce5c58f4197",
+                  "uuid": "bfb66b68-4b1e-48e2-8a0b-534788c48c5c",
+                  "parentUUID": "ca487cdb-e836-4676-8809-757662cf6d50",
                   "isHook": false,
                   "skipped": false
                 },
@@ -74,27 +74,27 @@
                   "context": null,
                   "code": "import_assert.default.throws(()=>{new import_states.default(\"http://localhost\",\"****\")},/Invalid token!/)",
                   "err": {},
-                  "uuid": "836a0767-fd78-419e-9f4d-b6c2dff9fe41",
-                  "parentUUID": "2268160d-ce33-44c4-b9f4-5ce5c58f4197",
+                  "uuid": "0edb592d-514f-4422-9b8b-1a26242b8648",
+                  "parentUUID": "ca487cdb-e836-4676-8809-757662cf6d50",
                   "isHook": false,
                   "skipped": false
                 }
               ],
               "suites": [],
               "passes": [
-                "58b7d68c-9742-42bb-bec4-5a11866cae60",
-                "836a0767-fd78-419e-9f4d-b6c2dff9fe41"
+                "bfb66b68-4b1e-48e2-8a0b-534788c48c5c",
+                "0edb592d-514f-4422-9b8b-1a26242b8648"
               ],
               "failures": [],
               "pending": [],
               "skipped": [],
-              "duration": 0,
+              "duration": 1,
               "root": false,
               "rootEmpty": false,
               "_timeout": 2000
             },
             {
-              "uuid": "28102af6-ebf7-4241-bf88-66d57299b183",
+              "uuid": "c4a3150b-1517-475d-a665-f7ab749fb787",
               "title": "getState()",
               "fullFile": "/home/runner/work/gitlab-badges/gitlab-badges/test/lib/states.ts",
               "file": "/test/lib/states.ts",
@@ -105,7 +105,7 @@
                   "title": "should work",
                   "fullTitle": "States getState() should work",
                   "timedOut": false,
-                  "duration": 936,
+                  "duration": 1634,
                   "state": "passed",
                   "speed": "slow",
                   "pass": true,
@@ -114,20 +114,20 @@
                   "context": null,
                   "code": "const states=new import_states.default;const result1=await states.getState(projectId,\"develop\");import_assert.default.strictEqual(typeof result1.status,\"string\");import_assert.default.ok(typeof result1.coverage===\"string\"||result1.coverage===void 0);const result2=await states.getState(projectId,\"develop\");import_assert.default.strictEqual(result2.status,result1.status);import_assert.default.strictEqual(result2.coverage,result1.coverage)",
                   "err": {},
-                  "uuid": "d6ba130d-2f72-4b22-9553-f7782eca7c34",
-                  "parentUUID": "28102af6-ebf7-4241-bf88-66d57299b183",
+                  "uuid": "f5a39459-fcff-4e05-aeaf-2aab4cee5c0e",
+                  "parentUUID": "c4a3150b-1517-475d-a665-f7ab749fb787",
                   "isHook": false,
                   "skipped": false
                 }
               ],
               "suites": [],
               "passes": [
-                "d6ba130d-2f72-4b22-9553-f7782eca7c34"
+                "f5a39459-fcff-4e05-aeaf-2aab4cee5c0e"
               ],
               "failures": [],
               "pending": [],
               "skipped": [],
-              "duration": 936,
+              "duration": 1634,
               "root": false,
               "rootEmpty": false,
               "_timeout": 30000
