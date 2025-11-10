@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">61.9% </span>
+                <span class="strong">60.57% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>104/168</span>
+                <span class='fraction'>106/175</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">69.69% </span>
+                <span class="strong">66.66% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>23/33</span>
+                <span class='fraction'>22/33</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">61.9% </span>
+                <span class="strong">60.57% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>104/168</span>
+                <span class='fraction'>106/175</span>
             </div>
         
             
@@ -231,7 +231,14 @@
 <a name='L166'></a><a href='#L166'>166</a>
 <a name='L167'></a><a href='#L167'>167</a>
 <a name='L168'></a><a href='#L168'>168</a>
-<a name='L169'></a><a href='#L169'>169</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
+<a name='L169'></a><a href='#L169'>169</a>
+<a name='L170'></a><a href='#L170'>170</a>
+<a name='L171'></a><a href='#L171'>171</a>
+<a name='L172'></a><a href='#L172'>172</a>
+<a name='L173'></a><a href='#L173'>173</a>
+<a name='L174'></a><a href='#L174'>174</a>
+<a name='L175'></a><a href='#L175'>175</a>
+<a name='L176'></a><a href='#L176'>176</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -260,6 +267,10 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -286,15 +297,18 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -426,7 +440,11 @@ export default class GitLabStateHelper {
         }
 &nbsp;
         this.maxCacheSize =
-            parseInt(process.env.MAX_CACHE_SIZE || '', 10) || 50;
+            parseInt(process.env.MAX_CACHE_SIZE ?? '50', 10);
+&nbsp;
+        if (isNaN(this.maxCacheSize)) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >            throw new Error('Invalid MAX_CACHE_SIZE value!');</span>
+<span class="cstat-no" title="statement not covered" >        }</span>
     }
 &nbsp;
     public <span class="fstat-no" title="function not covered" >getCachedStates(): Record&lt;string, StateCacheItem&gt; {</span>
@@ -437,7 +455,7 @@ export default class GitLabStateHelper {
         projectId: string,
         branch: string,
     ): Promise&lt;StateCachePipeline&gt; {
-        if (!this.cache[projectId]?.pipelines[branch]) {
+        if (!this.maxCacheSize || !this.cache[projectId]?.pipelines[branch]) {
             await this.refreshState(projectId);
         }
 &nbsp;
@@ -450,12 +468,14 @@ export default class GitLabStateHelper {
     }
 &nbsp;
     public <span class="fstat-no" title="function not covered" >start(): void {</span>
+<span class="cstat-no" title="statement not covered" >        if (!this.maxCacheSize) return;</span>
 <span class="cstat-no" title="statement not covered" >        if (!this.timeout) {</span>
 <span class="cstat-no" title="statement not covered" >            this.refreshNextState();</span>
 <span class="cstat-no" title="statement not covered" >        }</span>
 <span class="cstat-no" title="statement not covered" >    }</span>
 &nbsp;
     public <span class="fstat-no" title="function not covered" >stop(): void {</span>
+<span class="cstat-no" title="statement not covered" >        if (!this.maxCacheSize) return;</span>
 <span class="cstat-no" title="statement not covered" >        if (this.timeout) {</span>
 <span class="cstat-no" title="statement not covered" >            clearTimeout(this.timeout);</span>
 <span class="cstat-no" title="statement not covered" >            delete this.timeout;</span>
@@ -463,6 +483,7 @@ export default class GitLabStateHelper {
 <span class="cstat-no" title="statement not covered" >    }</span>
 &nbsp;
     protected <span class="fstat-no" title="function not covered" >refreshNextState(): void {</span>
+<span class="cstat-no" title="statement not covered" >        if (!this.maxCacheSize) return;</span>
 <span class="cstat-no" title="statement not covered" >        const now = new Date().getTime();</span>
 <span class="cstat-no" title="statement not covered" >        let count = 0;</span>
 <span class="cstat-no" title="statement not covered" >        let when = 120000;</span>
@@ -574,7 +595,7 @@ export default class GitLabStateHelper {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-11-05T05:27:41.541Z
+                at 2025-11-10T18:07:45.848Z
             </div>
         <script src="prettify.js"></script>
         <script>
