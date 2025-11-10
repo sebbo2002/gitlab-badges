@@ -1,7 +1,7 @@
 {
     "author": "Sebastian Pekarek <mail@sebbo.net>",
     "bin": {
-        "gitlab-badges": "./dist/bin/start.js"
+        "gitlab-badges": "./dist/start.js"
     },
     "bugs": {
         "url": "https://github.com/sebbo2002/gitlab-badges/issues"
@@ -58,10 +58,10 @@
         "build": "tsup",
         "build-all": "./.github/workflows/build.sh",
         "coverage": "c8 mocha",
-        "develop": "tsx src/bin/start.ts",
+        "develop": "tsx src/start.ts",
         "license-check": "license-checker --production --summary",
         "lint": "npx eslint . --fix && npx prettier . --write",
-        "start": "node ./dist/bin/start.js",
+        "start": "node ./dist/start.js",
         "test": "mocha"
     },
     "type": "module",
