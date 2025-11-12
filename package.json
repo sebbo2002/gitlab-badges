@@ -13,7 +13,6 @@
     "description": "It's like a very tiny shields.io (without website) for your private GitLab instance…",
     "devDependencies": {
         "@eslint/js": "^9.39.1",
-        "@qiwi/semantic-release-gh-pages-plugin": "^5.4.3",
         "@sebbo2002/semantic-release-docker": "^6.0.1",
         "@semantic-release/changelog": "^6.0.3",
         "@semantic-release/exec": "^7.1.0",
@@ -33,6 +32,7 @@
         "mocha": "^11.7.4",
         "mochawesome": "^7.1.4",
         "prettier": "^3.6.2",
+        "semantic-release": "^25.0.2",
         "semantic-release-license": "^1.0.3",
         "source-map-support": "^0.5.21",
         "tsup": "^8.5.0",
