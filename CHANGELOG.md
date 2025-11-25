@@ -1,3 +1,9 @@
+## [7.0.3](https://github.com/sebbo2002/gitlab-badges/compare/v7.0.2...v7.0.3) (2025-11-25)
+
+### Bug Fixes
+
+- Allow MAX_CACHE_SIZE=0 ([c97b122](https://github.com/sebbo2002/gitlab-badges/commit/c97b1227f0e100150c56b8d437d5d2ec67dd7159))
+
 ## [7.0.2](https://github.com/sebbo2002/gitlab-badges/compare/v7.0.1...v7.0.2) (2025-07-06)
 
 ## [7.0.1](https://github.com/sebbo2002/gitlab-badges/compare/v7.0.0...v7.0.1) (2025-06-18)
