@@ -25,7 +25,11 @@ export default class GitLabStateHelper {
         }
 
         this.maxCacheSize =
-            parseInt(process.env.MAX_CACHE_SIZE || '', 10) || 50;
+            parseInt(process.env.MAX_CACHE_SIZE ?? '50', 10);
+
+        if (isNaN(this.maxCacheSize)) {
+            throw new Error('Invalid MAX_CACHE_SIZE value!');
+        }
     }
 
     public getCachedStates(): Record<string, StateCacheItem> {
@@ -36,7 +40,7 @@ export default class GitLabStateHelper {
         projectId: string,
         branch: string,
     ): Promise<StateCachePipeline> {
-        if (!this.cache[projectId]?.pipelines[branch]) {
+        if (!this.maxCacheSize || !this.cache[projectId]?.pipelines[branch]) {
             await this.refreshState(projectId);
         }
 
@@ -49,12 +53,14 @@ export default class GitLabStateHelper {
     }
 
     public start(): void {
+        if (!this.maxCacheSize) return;
         if (!this.timeout) {
             this.refreshNextState();
         }
     }
 
     public stop(): void {
+        if (!this.maxCacheSize) return;
         if (this.timeout) {
             clearTimeout(this.timeout);
             delete this.timeout;
@@ -62,6 +68,7 @@ export default class GitLabStateHelper {
     }
 
     protected refreshNextState(): void {
+        if (!this.maxCacheSize) return;
         const now = new Date().getTime();
         let count = 0;
         let when = 120000;

@@ -36,7 +36,7 @@ Use environment variables to set login credentials and pushover tokens:
     </tr>
     <tr>
         <th scope="row">MAX_CACHE_SIZE</td>
-        <td>Optional, to setup the living cache size, defaults to 50</td>
+        <td>Optional, to setup the living cache size, defaults to 50, set to 0 (zero) to disable the cache</td>
     </tr>
 </table>
 

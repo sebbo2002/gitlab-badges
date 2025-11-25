@@ -1,7 +1,7 @@
 {
     "author": "Sebastian Pekarek <mail@sebbo.net>",
     "bin": {
-        "gitlab-badges": "./dist/bin/start.js"
+        "gitlab-badges": "./dist/start.js"
     },
     "bugs": {
         "url": "https://github.com/sebbo2002/gitlab-badges/issues"
@@ -12,34 +12,34 @@
     },
     "description": "It's like a very tiny shields.io (without website) for your private GitLab instance…",
     "devDependencies": {
-        "@eslint/js": "^9.29.0",
-        "@qiwi/semantic-release-gh-pages-plugin": "^5.4.3",
+        "@eslint/js": "^9.39.1",
         "@sebbo2002/semantic-release-docker": "^6.0.1",
         "@semantic-release/changelog": "^6.0.3",
         "@semantic-release/exec": "^7.1.0",
         "@semantic-release/git": "^10.0.1",
-        "@semantic-release/npm": "^12.0.1",
-        "@types/express": "^5.0.3",
+        "@semantic-release/npm": "^13.1.2",
+        "@types/express": "^5.0.5",
         "@types/mocha": "^10.0.10",
-        "@types/node": "^22.15.30",
+        "@types/node": "^24.10.1",
         "c8": "^10.1.3",
-        "eslint": "^9.29.0",
-        "eslint-config-prettier": "^10.1.5",
-        "eslint-plugin-jsonc": "^2.20.1",
-        "eslint-plugin-perfectionist": "^4.15.0",
+        "eslint": "^9.39.1",
+        "eslint-config-prettier": "^10.1.8",
+        "eslint-plugin-jsonc": "^2.21.0",
+        "eslint-plugin-perfectionist": "^4.15.1",
         "esm": "^3.2.25",
         "husky": "^9.1.7",
         "license-checker": "^25.0.1",
-        "mocha": "^11.7.1",
-        "mochawesome": "^7.1.3",
-        "prettier": "^3.5.3",
+        "mocha": "^11.7.5",
+        "mochawesome": "^7.1.4",
+        "prettier": "^3.6.2",
+        "semantic-release": "^25.0.2",
         "semantic-release-license": "^1.0.3",
         "source-map-support": "^0.5.21",
-        "tsup": "^8.5.0",
-        "tsx": "^4.20.3",
-        "typedoc": "^0.28.5",
-        "typescript": "^5.8.3",
-        "typescript-eslint": "^8.34.1"
+        "tsup": "^8.5.1",
+        "tsx": "^4.20.6",
+        "typedoc": "^0.28.14",
+        "typescript": "^5.9.3",
+        "typescript-eslint": "^8.46.2"
     },
     "engines": {
         "node": "20 || >=22.0.0"
@@ -58,10 +58,10 @@
         "build": "tsup",
         "build-all": "./.github/workflows/build.sh",
         "coverage": "c8 mocha",
-        "develop": "tsx src/bin/start.ts",
+        "develop": "tsx src/start.ts",
         "license-check": "license-checker --production --summary",
         "lint": "npx eslint . --fix && npx prettier . --write",
-        "start": "node ./dist/bin/start.js",
+        "start": "node ./dist/start.js",
         "test": "mocha"
     },
     "type": "module",
