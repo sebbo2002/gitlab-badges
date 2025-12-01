@@ -8,7 +8,7 @@
     },
     "dependencies": {
         "badge-maker": "^5.0.2",
-        "express": "^5.1.0"
+        "express": "^5.2.1"
     },
     "description": "It's like a very tiny shields.io (without website) for your private GitLab instance…",
     "devDependencies": {
