@@ -1,3 +1,5 @@
+## [7.0.4](https://github.com/sebbo2002/gitlab-badges/compare/v7.0.3...v7.0.4) (2025-12-10)
+
 ## [7.0.3](https://github.com/sebbo2002/gitlab-badges/compare/v7.0.2...v7.0.3) (2025-11-25)
 
 ### Bug Fixes
