@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./src/lib/index.ts"],
+    "entryPoints": ["./src/bin/start.ts"],
     "exclude": [],
     "excludeInternal": true,
     "excludePrivate": true,
