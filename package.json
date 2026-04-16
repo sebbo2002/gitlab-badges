@@ -1,7 +1,7 @@
 {
     "author": "Sebastian Pekarek <mail@sebbo.net>",
     "bin": {
-        "test-cli": "./dist/bin/cli.js"
+        "test-cli": "./dist/bin/cli.mjs"
     },
     "bugs": {
         "url": "https://github.com/sebbo2002/js-template/issues"
@@ -53,7 +53,7 @@
     "homepage": "https://github.com/sebbo2002/js-template#readme",
     "license": "MIT",
     "main": "./dist/lib/index.cjs",
-    "module": "./dist/lib/index.js",
+    "module": "./dist/lib/index.mjs",
     "name": "@sebbo2002/js-template-test",
     "repository": {
         "type": "git",
@@ -66,7 +66,7 @@
         "develop": "tsx src/bin/start.ts",
         "license-check": "license-checker --production --summary",
         "lint": "eslint . --fix && prettier . --write",
-        "start": "node ./dist/bin/start.js",
+        "start": "node ./dist/bin/start.mjs",
         "test": "mocha",
         "prepare": "husky"
     },
