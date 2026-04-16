@@ -34,11 +34,11 @@
         "prettier": "^3.5.3",
         "semantic-release-license": "^1.0.3",
         "source-map-support": "^0.5.21",
-        "tsdown": "^0.21.8",
-        "tsx": "^4.16.2",
-        "typedoc": "^0.26.3",
-        "typescript": "^5.5.3",
-        "typescript-eslint": "^8.0.0-alpha.41"
+        "tsdown": "^0.21.9",
+        "tsx": "^4.19.3",
+        "typedoc": "^0.28.3",
+        "typescript": "^5.8.3",
+        "typescript-eslint": "^8.31.0"
     },
     "engines": {
         "node": "20 || >=22.0.0"
