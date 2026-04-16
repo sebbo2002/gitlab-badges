@@ -111,7 +111,7 @@ jobs:
           context: .
           github-token: ${{ secrets.GITHUB_TOKEN }}
           builder: ${{ steps.buildx.outputs.name }}
-          platforms: linux/amd64,linux/arm64,linux/arm/v7,linux/arm/v6
+          platforms: linux/amd64,linux/arm64/v8
           pull: true
           push: true
           tags: |
@@ -136,7 +136,7 @@ jobs:
           context: .
           github-token: ${{ secrets.GITHUB_TOKEN }}
           builder: ${{ steps.buildx.outputs.name }}
-          platforms: linux/amd64,linux/arm64,linux/arm/v7,linux/arm/v6
+          platforms: linux/amd64,linux/arm64/v8
           pull: true
           push: true
           tags: |
@@ -161,7 +161,7 @@ jobs:
           context: .
           github-token: ${{ secrets.GITHUB_TOKEN }}
           builder: ${{ steps.buildx.outputs.name }}
-          platforms: linux/amd64,linux/arm64,linux/arm/v7,linux/arm/v6
+          platforms: linux/amd64,linux/arm64/v8
           pull: true
           push: true
           tags: |
@@ -201,7 +201,7 @@ jobs:
           context: .
           github-token: ${{ secrets.GITHUB_TOKEN }}
           builder: ${{ steps.buildx.outputs.name }}
-          platforms: linux/amd64,linux/arm64,linux/arm/v7,linux/arm/v6
+          platforms: linux/amd64,linux/arm64/v8
           push: true
           tags: |
             ${{ github.repository }}:${{ github.sha }}
