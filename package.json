@@ -1,7 +1,7 @@
 {
     "author": "Sebastian Pekarek <mail@sebbo.net>",
     "bin": {
-        "gitlab-badges": "./dist/start.js"
+        "gitlab-badges": "./dist/start.mjs"
     },
     "bugs": {
         "url": "https://github.com/sebbo2002/gitlab-badges/issues"
@@ -62,7 +62,7 @@
         "develop": "tsx src/start.ts",
         "license-check": "license-checker --production --summary",
         "lint": "npx eslint . --fix && npx prettier . --write",
-        "start": "node ./dist/start.js",
+        "start": "node ./dist/start.mjs",
         "test": "mocha"
     },
     "type": "module",
