@@ -27,7 +27,7 @@
         "eslint-plugin-jsonc": "^3.1.2",
         "eslint-plugin-perfectionist": "^5.8.0",
         "esm": "^3.2.25",
-        "globals": "^17.4.0",
+        "globals": "^17.5.0",
         "husky": "^9.1.7",
         "license-checker": "^25.0.1",
         "mocha": "^11.7.5",
