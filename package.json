@@ -20,7 +20,7 @@
         "@semantic-release/npm": "^13.1.5",
         "@types/express": "^5.0.6",
         "@types/mocha": "^10.0.10",
-        "@types/node": "^25.6.0",
+        "@types/node": "^25.9.1",
         "c8": "^11.0.0",
         "eslint": "^10.3.0",
         "eslint-config-prettier": "^10.1.8",
@@ -37,7 +37,7 @@
         "semantic-release-license": "^1.0.3",
         "source-map-support": "^0.5.21",
         "tsdown": "^0.22.0",
-        "tsx": "^4.21.0",
+        "tsx": "^4.22.3",
         "typedoc": "^0.28.19",
         "typescript": "^6.0.3",
         "typescript-eslint": "^8.60.0"
