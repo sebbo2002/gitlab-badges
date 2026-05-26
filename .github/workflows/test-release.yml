@@ -45,7 +45,7 @@ jobs:
       - name: 🔧 Setup node.js
         uses: actions/setup-node@v6
         with:
-          node-version: 23.x
+          node-version: 24.x
           cache: 'npm'
       - name: 📦 Install dependencies
         run: npm ci
@@ -68,6 +68,7 @@ jobs:
       - name: 🔧 Setup node.js
         uses: actions/setup-node@v6
         with:
+          node-version: 24.x
           cache: 'npm'
       - name: 📦 Install dependencies
         run: npm ci
@@ -82,20 +83,20 @@ jobs:
       PUSH_TO_DOCKERHUB: ${{ (github.repository != 'sebbo2002/js-template') && (secrets.DOCKERHUB_TOKEN != null) }}
     steps:
       - name: ☁️ Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - name: 🔧 Set up QEMU
-        uses: docker/setup-qemu-action@v3
+        uses: docker/setup-qemu-action@v4
       - name: 🔧 Set up Buildx
         id: buildx
-        uses: docker/setup-buildx-action@master
+        uses: docker/setup-buildx-action@v4
       - name: 🔐 Login to GitHub Container Registry
-        uses: docker/login-action@v3
+        uses: docker/login-action@v4
         with:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 🔐 Login to DockerHub
-        uses: docker/login-action@v3
+        uses: docker/login-action@v4
         if: ${{ env.PUSH_TO_DOCKERHUB == 'true' }}
         with:
           username: ${{ github.repository_owner }}
@@ -104,15 +105,16 @@ jobs:
         id: buildVars
         run: echo "date=$(date +'%Y-%m-%d %H:%M:%S')" >> $GITHUB_OUTPUT
       - name: 🔧 Setup node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
+          node-version: 24.x
           cache: 'npm'
       - name: 📦 Install dependencies
         run: npm ci
       - name: ⚙️ Build project
         run: npm run build
       - name: 🪄 Build and push
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v7
         continue-on-error: true
         id: docker-build-1
         timeout-minutes: 30
@@ -120,7 +122,7 @@ jobs:
           context: .
           github-token: ${{ secrets.GITHUB_TOKEN }}
           builder: ${{ steps.buildx.outputs.name }}
-          platforms: linux/amd64,linux/arm64,linux/arm/v7,linux/arm/v6
+          platforms: linux/amd64,linux/arm64/v8
           pull: true
           push: true
           tags: |
@@ -136,7 +138,7 @@ jobs:
             ghcr.io/${{ github.repository }}:cache-${{ hashFiles('package*.json') }}
             ghcr.io/${{ github.repository }}:next
       - name: 🪄 Build and push (second try)
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v7
         continue-on-error: true
         if: steps.docker-build-1.outcome=='failure'
         id: docker-build-2
@@ -145,7 +147,7 @@ jobs:
           context: .
           github-token: ${{ secrets.GITHUB_TOKEN }}
           builder: ${{ steps.buildx.outputs.name }}
-          platforms: linux/amd64,linux/arm64,linux/arm/v7,linux/arm/v6
+          platforms: linux/amd64,linux/arm64/v8
           pull: true
           push: true
           tags: |
@@ -161,7 +163,7 @@ jobs:
             ghcr.io/${{ github.repository }}:cache-${{ hashFiles('package*.json') }}
             ghcr.io/${{ github.repository }}:next
       - name: 🪄 Build and push (third try)
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v7
         if: steps.docker-build-2.outcome=='failure'
         continue-on-error: true
         id: docker-build-3
@@ -170,7 +172,7 @@ jobs:
           context: .
           github-token: ${{ secrets.GITHUB_TOKEN }}
           builder: ${{ steps.buildx.outputs.name }}
-          platforms: linux/amd64,linux/arm64,linux/arm/v7,linux/arm/v6
+          platforms: linux/amd64,linux/arm64/v8
           pull: true
           push: true
           tags: |
@@ -205,12 +207,12 @@ jobs:
       - name: 🔄 Push container to DockerHub
         id: docker-build-dh
         if: ${{ env.PUSH_TO_DOCKERHUB == 'true' }}
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v7
         with:
           context: .
           github-token: ${{ secrets.GITHUB_TOKEN }}
           builder: ${{ steps.buildx.outputs.name }}
-          platforms: linux/amd64,linux/arm64,linux/arm/v7,linux/arm/v6
+          platforms: linux/amd64,linux/arm64/v8
           push: true
           tags: |
             ${{ github.repository }}:${{ github.sha }}
@@ -296,13 +298,13 @@ jobs:
       - name: 📂 Create docs folder
         run: mkdir ./docs
       - name: 🔐 Login to GitHub Container Registry
-        uses: docker/login-action@v3
+        uses: docker/login-action@v4
         with:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 🔐 Login to DockerHub
-        uses: docker/login-action@v3
+        uses: docker/login-action@v4
         with:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
