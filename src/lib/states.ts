@@ -24,8 +24,7 @@ export default class GitLabStateHelper {
             throw new Error('Invalid token!');
         }
 
-        this.maxCacheSize =
-            parseInt(process.env.MAX_CACHE_SIZE ?? '50', 10);
+        this.maxCacheSize = parseInt(process.env.MAX_CACHE_SIZE ?? '50', 10);
 
         if (isNaN(this.maxCacheSize)) {
             throw new Error('Invalid MAX_CACHE_SIZE value!');

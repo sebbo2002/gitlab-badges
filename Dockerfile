@@ -1,10 +1,10 @@
-FROM node:lts-alpine@sha256:619ce27eb37c7c0476bd518085bf1ba892e2148fc1ab5dbaff2f20c56e50444d
+FROM node:lts-alpine@sha256:d1b3b4da11eefd5941e7f0b9cf17783fc99d9c6fc34884a665f40a06dbdfc94f
 ARG NODE_ENV=production
 ENV NODE_ENV=$NODE_ENV
 WORKDIR "/app"
 
 RUN apk add --no-cache --update dumb-init && \
-    ln -s /app/dist/start.js /usr/local/bin/start
+    ln -s /app/dist/start.mjs /usr/local/bin/start
 
 COPY package*.json "/app/"
 RUN npm ci --only-production
