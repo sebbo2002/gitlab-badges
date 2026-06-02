@@ -1,3 +1,18 @@
+# [8.0.0](https://github.com/sebbo2002/gitlab-badges/compare/v7.0.4...v8.0.0) (2026-06-02)
+
+### Features
+
+- Drop support for node.js v20 and v23 ([d949a08](https://github.com/sebbo2002/gitlab-badges/commit/d949a088c82ede8768c62556cfc0da9ce2255b1b))
+- Update Docker Base Image ([2ff47ce](https://github.com/sebbo2002/gitlab-badges/commit/2ff47ce0a7c9ec5e27a8af618d73c907ccf413a1))
+
+### BREAKING CHANGES
+
+- Drop node.js v20 / v23 Support
+
+This node.js version is no longer supported. For more information see https://nodejs.dev/en/about/releases/
+
+- Containers for linux/arm/v7 and linux/arm/v6 are no longer built automatically, as they are no longer available for node:lts-alpine. Please build these containers yourself if you need to. New supported platforms: linux/amd64 and linux/arm64/v8
+
 ## [7.0.4](https://github.com/sebbo2002/gitlab-badges/compare/v7.0.3...v7.0.4) (2025-12-10)
 
 ## [7.0.3](https://github.com/sebbo2002/gitlab-badges/compare/v7.0.2...v7.0.3) (2025-11-25)
