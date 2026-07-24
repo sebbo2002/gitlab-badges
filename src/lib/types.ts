@@ -19,8 +19,4 @@ export interface StateCachePipeline {
 }
 
 export type Style =
-    | 'flat'
-    | 'flat-square'
-    | 'for-the-badge'
-    | 'plastic'
-    | 'social';
+    'flat' | 'flat-square' | 'for-the-badge' | 'plastic' | 'social';
