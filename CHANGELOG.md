@@ -1,3 +1,5 @@
+## [8.0.2](https://github.com/sebbo2002/gitlab-badges/compare/v8.0.1...v8.0.2) (2026-10-29)
+
 ## [8.0.1](https://github.com/sebbo2002/gitlab-badges/compare/v8.0.0...v8.0.1) (2026-07-24)
 
 # [8.0.0](https://github.com/sebbo2002/gitlab-badges/compare/v7.0.4...v8.0.0) (2026-06-02)
